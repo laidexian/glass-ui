@@ -1,0 +1,1522 @@
+// 引入主体样式和字体样式
+@import url(font.css);
+@import url(main.css);
+@import url(normalize.css);
+
+// PC端布局
+body {
+    background: url(../images/background2.png) no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+
+    // 蒙版
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        -ms-background-color: var(--xf_glass_color_1);
+        -moz-background-color: var(--xf_glass_color_1);
+        -webkit-background-color: var(--xf_glass_color_1);
+        background-color: var(--xf_glass_color_1);
+    }
+
+    // 触发微信弹窗图片的样式
+    #xf_wxImg {
+        border-radius: .026rem;
+        cursor: pointer;
+        -webkit-transition: all .3s;
+        transition: all .3s;
+    }
+
+    #xf_wxImg:hover {
+        -webkit-opacity: .7;
+        opacity: .7;
+    }
+
+    //弹窗背景
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: .5208rem;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        -webkit-background-color: rgba(0, 0, 0, .8);
+        background-color: rgba(0, 0, 0, .8);
+        -webkit-backdrop-filter: var(--xf_glass_blur);
+        backdrop-filter: var(--xf_glass_blur);
+        z-index: 100;
+    }
+
+    // 图片大小
+    .modal-content {
+        margin: auto;
+        display: block;
+        width: 60%;
+        max-width: 450px;
+    }
+
+    // 文本内容样式
+    #caption {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 3.6458rem;
+        text-align: center;
+        color: var(--xf_grey);
+        padding: .0521rem 0;
+        height: .7813rem;
+        font-size: .125rem;
+    }
+
+    // 弹出动画
+    .modal-content,
+    #caption {
+        -webkit-animation-name: xf-wximg;
+        -webkit-animation-duration: 0.6s;
+        animation-name: xf-wximg;
+        animation-duration: 0.6s;
+    }
+
+    @-webkit-keyframes xf-wximg {
+        from {
+            -webkit-transform: scale(0)
+        }
+
+        to {
+            -webkit-transform: scale(1)
+        }
+    }
+
+    @keyframes xf-wximg {
+        from {
+            transform: scale(0)
+        }
+
+        to {
+            transform: scale(1)
+        }
+    }
+
+    // 关闭按钮
+    .close {
+        position: absolute;
+        top: .0781rem;
+        right: .1823rem;
+        color: #f1f1f1;
+        font-size: .2083rem;
+        font-weight: bold;
+        -webkit-transition: 0.3s;
+        transition: 0.3s;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    // 小屏幕中图片宽度为 100%
+    @media only screen and (max-width: 700px) {
+        .modal-content {
+            width: 100%;
+        }
+    }
+
+    // 超级大盒子
+    .big_box {
+        width: 100%;
+
+        // 顶部盒子
+        .xf_hd_box {
+            position: relative;
+            height: 1.1719rem;
+
+            // 三点
+            &::after {
+                content: " ";
+                display: inline-block;
+                position: absolute;
+                right: .4063rem;
+                top: .1094rem;
+                width: .08335rem;
+                height: .08335rem;
+                -webkit-border-radius: 50%;
+                border-radius: 50%;
+                background: #da5e46;
+                -moz-box-shadow: var(--xf_gradient_6);
+                -webkit-box-shadow: var(--xf_gradient_6);
+                box-shadow: var(--xf_gradient_6);
+                border-color: transparent;
+            }
+
+            // 标题
+            h1,
+            h2 {
+                position: absolute;
+                font-family: 'jianyuanti';
+                padding: 0 .6302rem;
+                font-size: .6216rem;
+                font-weight: bold;
+                color: var(--xf_white);
+                display: inline-block;
+                margin: .2135415rem 0;
+                -moz-border-radius: 0 .3906rem .3906rem 0;
+                -webkit-border-radius: 0 .3906rem .3906rem 0;
+                border-radius: 0 .3906rem .3906rem 0;
+                overflow: hidden;
+                white-space: nowrap;
+                // 文字超出宽度则显示ellipsis省略号
+                text-overflow: ellipsis;
+                width: 53%;
+            }
+
+            h1 {
+                z-index: 1;
+                background-image: -o-linear-gradient(right, var(--xf_gradient_2));
+                background-image: -ms-linear-gradient(right, var(--xf_gradient_2));
+                background-image: -moz-linear-gradient(right, var(--xf_gradient_2));
+                background-image: -webkit-linear-gradient(right, var(--xf_gradient_2));
+                -webkit-text-fill-color: transparent;
+                -webkit-background-clip: text;
+                background-clip: text;
+                -moz-overflow: hidden;
+                -webkit-overflow: hidden;
+                overflow: hidden;
+                color: var(--xf_white);
+
+                // 鼠标选中样式
+                &::selection {
+                    -webkit-background: transparent;
+                    -webkit-background: var(--xf_lilac_colour);
+                    background: var(--xf_lilac_colour);
+                }
+
+                &::-webkit-selection {
+                    -webkit-background: transparent;
+                    -webkit-background: var(--xf_lilac_colour);
+                    background: var(--xf_lilac_colour);
+                }
+
+                &::-moz-selection {
+                    -webkit-background: transparent;
+                    -webkit-background: var(--xf_lilac_colour);
+                    background: var(--xf_lilac_colour);
+                }
+            }
+
+            // 标题底部阴影
+            h2 {
+                color: transparent;
+                -webkit-text-shadow: -0.0137rem -0.0076rem .0365rem rgba(255, 255, 255, .4), .0078rem .0135rem .0365rem rgba(0, 0, 0, .4);
+                text-shadow: -0.0137rem -0.0076rem .0365rem var(--xf_glass_color_3), .0078rem .0135rem .0365rem rgba(0, 0, 0, .4);
+
+                // 鼠标选中样式
+                &::selection {
+                    -webkit-background: transparent;
+                    background: transparent;
+                }
+
+                &::-webkit-selection {
+                    -webkit-background: transparent;
+                    background: transparent;
+                }
+
+                &::-moz-selection {
+                    -webkit-background: transparent;
+                    background: transparent;
+                }
+            }
+
+            // 搜索栏
+            .xf_search {
+                position: absolute;
+                right: 6.4%;
+                bottom: .1615rem;
+
+                form {
+                    position: relative;
+                    height: .3385rem;
+                    width: 2.3177rem;
+                    background-color: var(--xf_glass_color);
+                    border-radius: .1042rem;
+                    // 模糊效果
+                    -moz-backdrop-filter: var(--xf_glass_blur);
+                    -webkit-backdrop-filter: var(--xf_glass_blur);
+                    -ms-backdrop-filter: var(--xf_glass_blur);
+                    -o-backdrop-filter: var(--xf_glass_blur);
+                    backdrop-filter: var(--xf_glass_blur);
+                    -webkit-box-shadow: var(--xf_glass);
+                    box-shadow: var(--xf_glass);
+
+                    input {
+                        position: absolute;
+                        bottom: 0;
+                        height: 100%;
+
+                        &:nth-child(1) {
+                            left: 0;
+                            width: 100%;
+                            font-size: .125rem;
+                            color: var(--xf_white);
+                            -webkit-text-indent: .125rem;
+                            text-indent: .125rem;
+                        }
+
+                        &:nth-child(2) {
+                            right: 0;
+                            width: .4688rem;
+                            -webkit-background-color: var(--xf_glass_color_2);
+                            background-color: var(--xf_glass_color_2);
+                            -webkit-border-radius: 0 .1042rem .1042rem 0;
+                            border-radius: 0 .1042rem .1042rem 0;
+
+                            // &:active {
+                            //     -webkit-box-shadow: var(--xf_glass_shadow_inset);
+                            //     box-shadow: var(--xf_glass_shadow_inset);
+                            // }
+                        }
+                    }
+
+                    i {
+                        position: absolute;
+                        right: .1354rem;
+                        bottom: 50%;
+                        -webkit-transform: translateY(50%);
+                        transform: translateY(50%);
+                        font-size: .2083rem;
+                        color: var(--xf_white);
+                        z-index: -1;
+                    }
+                }
+            }
+        }
+
+        // 版心
+        .main_content {
+            display: flex;
+            margin: 0 auto;
+            width: 8.724rem;
+            height: 2.9114581rem;
+            -webkit-perspective: 4.6875rem;
+            perspective: 4.7396rem;
+
+            // 左侧盒子
+            .xf_left_box {
+                width: 2.8125rem;
+                height: 100%;
+
+                // 左侧顶部盒子
+                .xf_leftbox_top {
+                    height: 2.4323rem;
+                    padding: .1615rem .099rem;
+
+                    // 时间
+                    .xf_time {
+                        height: 1.4219rem;
+                        padding: .1875rem .1458331rem;
+
+                        // 时钟
+                        .clock {
+                            position: relative;
+                            float: left;
+                            display: flex;
+                            width: 1.0938rem;
+                            height: 1.0938rem;
+                            grid-column: 2/3;
+                            grid-row: 1/3;
+                            justify-self: center;
+                            border-radius: 50%;
+                            justify-content: center;
+                            align-items: center;
+
+                            // 蒙版
+                            &::before {
+                                content: '';
+                                position: absolute;
+                                left: 0;
+                                bottom: 0;
+                                width: 1.0938rem;
+                                height: 1.0938rem;
+                                background: url(../images/Gradual-circle.svg) no-repeat;
+                                background-size: cover;
+                            }
+
+                            &::after {
+                                content: '';
+                                position: absolute;
+                                left: 50%;
+                                bottom: 50%;
+                                -webkit-transform: translate(-50%, 50%);
+                                transform: translate(-50%, 50%);
+                                width: .7188rem;
+                                height: .7188rem;
+                                -webkit-background-color: var(--xf_glass_color);
+                                background-color: var(--xf_glass_color);
+                                border-radius: 50%;
+                                -webkit-box-shadow: 0 0 3px 3px var(--xf_glass_color_1);
+                                box-shadow: 0 0 3px 3px var(--xf_glass_color_1);
+                            }
+
+                            // 圆中心
+                            .point {
+                                position: absolute;
+                                width: .0521rem;
+                                height: .0521rem;
+                                border-radius: 50%;
+                                background-color: var(--xf_white);
+                                z-index: 10;
+                            }
+
+                            // 指针
+                            .hand {
+                                position: absolute;
+                                bottom: 50%;
+                                -webkit-transform-origin: bottom;
+                                transform-origin: bottom;
+                                border-radius: .0521rem;
+                                z-index: 9;
+                            }
+
+                            // 时针
+                            .hours {
+                                width: .0208rem;
+                                height: .2604rem;
+                                background-color: #fceb92;
+                            }
+
+                            // 分针
+                            .minutes {
+                                width: .0156rem;
+                                height: .3906rem;
+                                background-color: #2580b4;
+                            }
+
+                            // 秒针
+                            .seconds {
+                                width: .0104rem;
+                                height: .4427rem;
+                                background-color: var(--xf_white);
+                            }
+
+                            // 四个时间
+                            .marker {
+                                position: relative;
+                                border-radius: 50%;
+                                width: 97%;
+                                height: 97%;
+
+                                .marker_time {
+                                    position: absolute;
+                                    border-radius: 50%;
+                                    -webkit-background-color: var(--xf_glass_color_3);
+                                    background-color: var(--xf_glass_color_3);
+                                }
+
+                                .marker__1,
+                                .marker__2 {
+                                    width: .0156rem;
+                                    height: .0521rem;
+                                    left: 50%;
+                                    -webkit-transform: translateX(-50%);
+                                    transform: translateX(-50%);
+                                }
+
+                                .marker__3,
+                                .marker__4 {
+                                    width: .0521rem;
+                                    height: .0156rem;
+                                    top: 50%;
+                                    -webkit-transform: translateY(-50%);
+                                    transform: translateY(-50%);
+                                }
+
+                                .marker__1 {
+                                    top: 3%;
+                                }
+
+                                .marker__2 {
+                                    bottom: 6%;
+                                }
+
+                                .marker__3 {
+                                    left: 3%;
+                                }
+
+                                .marker__4 {
+                                    right: 6%;
+                                }
+                            }
+                        }
+
+                        // 显示时间
+                        .display_time {
+                            display: flex;
+                            flex-direction: column;
+                            font-family: 'jianyuanti';
+                            color: var(--xf_white);
+                            -webkit-text-shadow: var(--xf_text_shadow);
+                            text-shadow: var(--xf_text_shadow);
+
+                            .xf_time_1,
+                            .xf_time_2,
+                            .xf_time_3 {
+                                text-align: center;
+                                font-weight: normal;
+                            }
+
+                            .xf_time_1 {
+                                font-size: .375rem;
+                            }
+
+                            .xf_time_2 {
+                                margin: .0365rem 0;
+                                font-size: .1823rem;
+                            }
+
+                            .xf_time_3 {
+                                font-size: .1823rem;
+                            }
+                        }
+                    }
+
+                    // 气温
+                    .xf_weather {
+                        margin-top: .1458331rem;
+                        height: .5521rem;
+                        -webkit-overflow: hidden;
+                        overflow: hidden;
+
+                        #he-plugin-standard {
+                            position: relative;
+                            width: 100% !important;
+                            height: 100% !important;
+
+                            .wv-v-h-location {
+                                position: absolute;
+                                left: .0521rem;
+                                top: .026rem;
+                                padding: 0;
+                                width: 100%;
+                                font-size: .07296rem;
+
+                                span {
+                                    // text-decoration: underline var(--xf_white);
+                                    -webkit-opacity: .7;
+                                    opacity: .7;
+                                }
+
+                                a {
+                                    display: none;
+                                }
+                            }
+
+                            .wv-lt-refresh {
+                                display: none;
+                            }
+
+                            .wv-f-row {
+                                display: flex;
+
+                                .wv-f-col-4 {
+                                    position: relative;
+                                    flex: 1;
+                                    display: flex;
+                                    flex-direction: column;
+                                    flex-wrap: nowrap;
+                                    align-items: center;
+                                    height: 0.5521rem !important;
+
+                                    li {
+                                        flex: 1;
+                                        height: 0 !important;
+
+                                        &:nth-child(1),
+                                        &:nth-child(3) {
+                                            position: absolute;
+                                            bottom: 0;
+                                            left: 0;
+                                            width: 100%;
+                                            height: .1563rem !important;
+
+                                            a {
+                                                font-size: .0938rem;
+                                                -webkit-text-shadow: var(--xf_text_shadow);
+                                                text-shadow: var(--xf_text_shadow);
+                                            }
+                                        }
+
+                                        &:nth-child(1) a {
+                                            float: left;
+                                            margin-left: 15%;
+                                        }
+
+                                        &:nth-child(3) a {
+                                            float: right;
+                                            margin-right: 15%;
+                                        }
+
+                                        &:nth-child(2) {
+                                            a img {
+                                                width: .3125rem;
+                                            }
+                                        }
+                                    }
+
+                                    .wv-f-forecast-tmp {
+
+                                        // 空气状态
+                                        span {
+                                            display: none;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // 图标轮播
+                .xf_ico_banner {
+                    position: relative;
+                    width: 100%;
+                    height: .484375rem;
+                    -webkit-overflow: hidden;
+                    overflow: hidden;
+
+                    .swiper-wrapper .swiper-slide {
+                        ul {
+                            display: flex;
+                            -moz-justify-content: space-around;
+                            -webkit-justify-content: space-around;
+                            justify-content: space-around;
+                            padding: 0 .1042rem;
+
+                            li {
+                                position: relative;
+                                margin-top: .0521rem;
+                                width: .349rem;
+                                height: .349rem;
+                                border-radius: 50%;
+                                display: flex;
+                                -moz-items: center;
+                                -webkit-items: center;
+                                align-items: center;
+                                -moz-justify-content: space-around;
+                                -webkit-justify-content: space-around;
+                                justify-content: space-around;
+
+                                a img,
+                                #xf_wxImg {
+                                    position: absolute;
+                                    left: 0;
+                                    bottom: 0;
+                                    width: 100%;
+                                    height: 100%;
+                                    padding: .7813vw;
+                                }
+
+                                // 微信图片
+                                #xf_wxImg {
+                                    z-index: 1;
+                                    -webkit-opacity: 0;
+                                    opacity: 0;
+                                }
+                            }
+                        }
+                    }
+
+                    // 箭头
+                    .swiper-button-next-ico,
+                    .swiper-button-prev-ico {
+                        height: 1.5625vw;
+                        width: 1.5625vw;
+                        -webkit-color: var(--xf_glass_color_3);
+                        color: var(--xf_glass_color_3);
+                        --swiper-navigation-size: 1.5625vw;
+                    }
+                }
+            }
+
+            // 中间的盒子
+            .xf_center_box {
+                width: 3.1771rem;
+                height: 100%;
+                margin: 0 .2083rem;
+
+                // 名片盒子
+                .center_top {
+                    height: 1.3646rem;
+
+                    // 介绍盒子
+                    .xf_jieshao {
+                        position: relative;
+                        height: .901rem;
+
+                        // 头像
+                        .xf_tx {
+                            position: absolute;
+                            left: .2292rem;
+                            bottom: 0;
+                            width: .7813rem;
+                            height: .7813rem;
+                            -moz-border-radius: .0885rem;
+                            -webkit-border-radius: .0885rem;
+                            border-radius: .0885rem;
+                            overflow: hidden;
+
+                            img {
+                                width: 100%;
+
+                            }
+                        }
+
+                        // 姓名
+                        .name {
+                            position: absolute;
+                            left: 1.125rem;
+                            bottom: 0;
+                            color: var(--xf_white);
+                            -moz-text-shadow: var(--xf_text_shadow);
+                            -webkit-text-shadow: var(--xf_text_shadow);
+                            text-shadow: var(--xf_text_shadow);
+
+                            small {
+                                font-family: "楷体";
+                                font-size: .1198rem;
+                                overflow: hidden;
+                                white-space: nowrap;
+                                text-overflow: ellipsis;
+                            }
+
+                            h3 {
+                                font-family: 'jianyuanti';
+                                font-size: .2396rem;
+                                font-weight: normal;
+                                margin: .026rem 0 .0781rem;
+                                overflow: hidden;
+                                white-space: nowrap;
+                                text-overflow: ellipsis;
+                            }
+
+                            p {
+                                width: 1.6979rem;
+                                margin: 0;
+                                display: inline-block;
+                                font-family: "楷体";
+                                font-size: .1198rem;
+                                padding: .0208rem .026rem;
+                                -moz-background-color: var(--xf_glass_color);
+                                -webkit-background-color: var(--xf_glass_color);
+                                background-color: var(--xf_glass_color);
+                                -webkit-border-radius: .1198rem;
+                                border-radius: .1198rem;
+                                -moz-box-shadow: .0052rem .0052rem .0052rem 0 rgba(0, 0, 0, .2);
+                                -webkit-box-shadow: .0052rem .0052rem .0052rem 0 rgba(0, 0, 0, .2);
+                                box-shadow: .0052rem .0052rem .0052rem 0 rgba(0, 0, 0, .2);
+                                // 超出显示...
+                                -webkit-text-overflow: ellipsis;
+                                text-overflow: ellipsis;
+                                -webkit-overflow: hidden;
+                                overflow: hidden;
+                                // 文本不换行
+                                -webkit-white-space: nowrap;
+                                white-space: nowrap;
+                            }
+                        }
+
+                        // 转发&留言
+                        .icon-liuyanban-05,
+                        .icon-zhuanfa {
+                            position: absolute;
+                            top: .0833rem;
+                            right: .125rem;
+                            width: .3385rem;
+                            height: .3385rem;
+                            font-size: .3385rem;
+                            color: var(--xf_white);
+                        }
+                    }
+
+                    // 站点和运势按钮
+                    .xf_but {
+                        font-family: "Microsoft Yahei", "微软雅黑";
+                        margin: .1302rem auto;
+                        text-align: center;
+
+                        .but_site,
+                        .but_fortune {
+                            position: relative;
+                            display: inline-block;
+                            height: .25rem;
+                            width: .9375rem;
+                            font-size: .1042rem;
+                            line-height: .25rem;
+                            margin: 0 .0938rem;
+                            color: var(--xf_white);
+                            -moz-border-radius: .25rem;
+                            -webkit-border-radius: .25rem;
+                            border-radius: .25rem;
+
+                            // 渐变背景
+                            div {
+                                position: absolute;
+                                left: 0;
+                                bottom: 0;
+                                width: 100%;
+                                height: 100%;
+                                -moz-border-radius: .25rem;
+                                -webkit-border-radius: .25rem;
+                                border-radius: .25rem;
+                                z-index: -1;
+                            }
+
+                            // 鼠标经过动画
+                            &:hover {
+                                div {
+                                    -moz-animation: xf-filter forwards .5s;
+                                    -webkit-animation: xf-filter forwards .5s;
+                                    animation: xf-filter forwards .5s;
+
+                                    @keyframes xf-filter {
+                                        0% {
+                                            -webkit-filter: blur(.026rem);
+                                            filter: blur(.026rem);
+                                        }
+
+                                        100% {
+                                            -webkit-filter: blur(0);
+                                            filter: blur(0);
+                                            -moz-box-shadow: var(--xf_glass_shadow);
+                                            -webkit-box-shadow: var(--xf_glass_shadow);
+                                            -ms-box-shadow: var(--xf_glass_shadow);
+                                            -o-box-shadow: var(--xf_glass_shadow);
+                                            box-shadow: var(--xf_glass_shadow);
+                                        }
+                                    }
+
+                                    @-webkit-keyframes xf-filter {
+                                        0% {
+                                            -webkit-filter: blur(3px);
+                                            filter: blur(3px);
+                                        }
+
+                                        100% {
+                                            -webkit-filter: blur(0);
+                                            filter: blur(0);
+                                            -moz-box-shadow: var(--xf_glass_shadow);
+                                            -webkit-box-shadow: var(--xf_glass_shadow);
+                                            -ms-box-shadow: var(--xf_glass_shadow);
+                                            -o-box-shadow: var(--xf_glass_shadow);
+                                            box-shadow: var(--xf_glass_shadow);
+                                        }
+                                    }
+                                }
+                            }
+
+                            // 鼠标点击动画
+                            &:active {
+                                div {
+                                    -moz-animation: xf-active forwards .5s;
+                                    -webkit-animation: xf-active forwards .5s;
+                                    animation: xf-active forwards .5s;
+
+                                    @keyframes xf-active {
+                                        0% {
+                                            -webkit-filter: blur(0);
+                                            filter: blur(0);
+                                            -o-box-shadow: var(--xf_glass_shadow_inset);
+                                            -ms-box-shadow: var(--xf_glass_shadow_inset);
+                                            -moz-box-shadow: var(--xf_glass_shadow_inset);
+                                            -webkit-box-shadow: var(--xf_glass_shadow_inset);
+                                            box-shadow: var(--xf_glass_shadow_inset);
+                                        }
+
+                                        100% {
+                                            -webkit-filter: blur(0);
+                                            filter: blur(0);
+                                            -o-box-shadow: var(--xf_glass_shadow_inset);
+                                            -ms-box-shadow: var(--xf_glass_shadow_inset);
+                                            -moz-box-shadow: var(--xf_glass_shadow_inset);
+                                            -webkit-box-shadow: var(--xf_glass_shadow_inset);
+                                            box-shadow: var(--xf_glass_shadow_inset);
+                                        }
+                                    }
+                                }
+                            }
+                        }
+
+                        .but_site {
+                            div {
+                                background-image: -o-linear-gradient(bottom, var(--xf_gradient_1));
+                                background-image: -ms-linear-gradient(bottom, var(--xf_gradient_1));
+                                background-image: -moz-linear-gradient(bottom, var(--xf_gradient_1));
+                                background-image: -webkit-linear-gradient(bottom, var(--xf_gradient_1));
+                                -webkit-filter: blur(.026rem);
+                                filter: blur(.0156rem);
+                            }
+                        }
+
+                        .but_fortune {
+                            div {
+                                background-image: -o-linear-gradient(bottom, var(--xf_gradient_3));
+                                background-image: -ms-linear-gradient(bottom, var(--xf_gradient_3));
+                                background-image: -moz-linear-gradient(bottom, var(--xf_gradient_3));
+                                background-image: -webkit-linear-gradient(bottom, var(--xf_gradient_3));
+                                -webkit-filter: blur(.0156rem);
+                                filter: blur(.026rem);
+                            }
+                        }
+                    }
+                }
+
+                // 旗下站点和运势
+                .center_bottom {
+                    position: relative;
+                    margin-top: .1094rem;
+                    height: 1.4375rem;
+
+                    // 旗下站点和运势公共样式
+                    .xf_site,
+                    .xf_fortune {
+                        position: absolute;
+                        left: 0;
+                        bottom: 0;
+                        width: 100%;
+                        height: 100%;
+                        padding: .0885415rem .125rem;
+
+                        // 顶部标题
+                        h4 {
+                            position: relative;
+                            margin: 0;
+                            border-bottom: .0104165rem solid var(--xf_white);
+                            -webkit-text-shadow: var(--xf_text_shadow);
+                            text-shadow: var(--xf_text_shadow);
+
+                            // 下箭头
+                            &::after {
+                                content: '';
+                                width: .0781rem;
+                                height: .0781rem;
+                                position: absolute;
+                                right: .0313rem;
+                                top: 0;
+                                border-bottom: .0156rem solid var(--xf_white);
+                                border-right: .0156rem solid var(--xf_white);
+                                -moz-transform: rotateZ(45deg);
+                                -webkit-transform: rotateZ(45deg);
+                                transform: rotateZ(45deg);
+                            }
+
+                            font {
+                                display: inline-block;
+                                height: .2344rem;
+                                font-family: 'jiangnan';
+                                font-size: .1615rem;
+                                color: var(--xf_white);
+                            }
+                        }
+                    }
+
+                    // 旗下站点
+                    .xf_site {
+                        h4 {
+                            font {
+                                margin-left: .25rem;
+                            }
+
+                            // 站点图标
+                            &::before {
+                                content: '';
+                                width: .2083rem;
+                                height: .2083rem;
+                                position: absolute;
+                                left: 0;
+                                top: -0.0156rem;
+                                background: url(../images/site.png) no-repeat;
+                                background-size: cover;
+                            }
+                        }
+
+                        .web_site {
+                            display: flex;
+                            flex-wrap: wrap;
+                            justify-content: space-evenly;
+                            width: 100%;
+                            height: 1.0938rem;
+                            padding: 0;
+                            margin: 0;
+                            overflow: hidden;
+
+                            &:hover {
+                                overflow: auto;
+                            }
+
+                            // 定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸
+                            &::-webkit-scrollbar {
+                                width: .0365rem;
+                                height: .0365rem;
+                                -webkit-background-color: transparent;
+                                background-color: transparent;
+                            }
+
+                            &::-webkit-scrollbar-track {
+                                border-radius: .0521rem;
+                                -webkit-background-color: transparent;
+                                background-color: transparent;
+                            }
+
+                            &::-webkit-scrollbar-thumb {
+                                border-radius: .0521rem;
+                                background-color: var(--xf_white);
+                            }
+
+                            li {
+                                display: inline-block;
+                                border-radius: .0520835rem;
+                                width: 1.0417rem;
+                                height: .375rem;
+                                margin-top: .1042rem;
+
+                                // 点击动画
+                                &:active {
+                                    -webkit-animation: site-active forwards .5s;
+                                    animation: site-active forwards .5s;
+
+                                    @keyframes site-active {
+                                        100% {
+                                            -moz-box-shadow: var(--xf_glass_shadow_inset);
+                                            -webkit-box-shadow: var(--xf_glass_shadow_inset);
+                                            -ms-box-shadow: var(--xf_glass_shadow_inset);
+                                            -o-box-shadow: var(--xf_glass_shadow_inset);
+                                            box-shadow: var(--xf_glass_shadow_inset);
+                                        }
+                                    }
+                                }
+
+                                a {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    text-align: center;
+                                    width: 100%;
+                                    height: 100%;
+                                    font-size: .1146rem;
+
+                                    &:hover span {
+                                        -webkit-text-shadow: none;
+                                        text-shadow: none;
+                                    }
+
+                                    img {
+                                        width: .1667rem;
+                                        width: .1667rem;
+                                        margin-left: .0208rem;
+                                    }
+
+                                    span {
+                                        margin: 0 .0208rem;
+                                        -webkit-overflow: hidden;
+                                        overflow: hidden;
+                                        -webkit-text-overflow: ellipsis;
+                                        text-overflow: ellipsis;
+                                        display: -webkit-box;
+                                        -webkit-box-orient: vertical;
+                                        -webkit-line-clamp: 2;
+                                        -webkit-text-shadow: var(--xf_text_shadow);
+                                        text-shadow: var(--xf_text_shadow);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    // 今日运势
+                    .xf_fortune {
+                        span {
+                            color: #ffcf00;
+                        }
+
+                        .Today_Fortune {
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
+                            margin-top: .0833rem;
+                            width: 100%;
+                            height: .9375rem;
+
+                            // 进度条
+                            li {
+                                margin: .0417rem;
+                                color: var(--xf_white);
+                                text-shadow: var(--xf_text_shadow);
+
+                                // 标题
+                                strong {
+                                    text-align: left;
+                                    display: inline-block;
+                                    font-size: .0833rem;
+                                }
+
+                                // 进度条底部颜色
+                                span {
+                                    display: inline-block;
+                                    height: .0521rem;
+                                    width: 87%;
+                                    border-radius: .0521rem;
+                                    -webkit-background-color: var(--xf_glass_color);
+                                    background-color: var(--xf_glass_color);
+                                    -webkit-box-shadow: var(--xf_glass_shadow_solid_bottom);
+                                    box-shadow: var(--xf_glass_shadow_solid_bottom);
+                                    padding: .0156rem;
+
+                                    // 进度条颜色
+                                    em {
+                                        display: table;
+                                        height: .0208rem;
+                                        background-image: -moz-linear-gradient(0deg, #7e00ff 0%, #00fff6 100%);
+                                        background-image: -webkit-linear-gradient(0deg, #7e00ff 0%, #00fff6 100%);
+                                        background-image: -ms-linear-gradient(0deg, #7e00ff 0%, #00fff6 100%);
+                                        background-image: -o-linear-gradient(0deg, #7e00ff 0%, #00fff6 100%);
+                                        border-radius: .026rem;
+                                        -webkit-opacity: 60%;
+                                        opacity: 60%;
+                                        -webkit-animation: xf_schedule 3s linear;
+                                        animation: xf_schedule 3s linear;
+
+                                        @keyframes xf_schedule {
+                                            0% {
+                                                width: 0;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // .xf-rotate{
+            //     -webkit-transform: rotateY(180deg);
+            //     transform: rotateY(180deg);
+            // }
+            // .xf-rotate2{
+            //     -webkit-transform: rotateY(180deg);
+            //     transform: rotateY(180deg);
+            // }
+            // 右侧的盒子
+            .xf_right_box {
+                width: 2.3177rem;
+                height: 100%;
+                padding: 0 .1042rem;
+                -moz-transition: transform .5s;
+                -webkit-transition: transform .5s;
+                transition: transform .5s;
+                -webkit-transform-style: preserve-3d;
+                transform-style: preserve-3d;
+                overflow: hidden;
+
+                // &:hover {
+                //     -webkit-transform: rotateY(180deg);
+                //     transform: rotateY(180deg);
+                // }
+
+                // 音乐播放器
+                .xf_music_box {
+                    width: 100%;
+                    height: 100%;
+
+                    // 右箭头
+                    .icon-youjiantou {
+                        position: absolute;
+                        right: .1354rem;
+                        top: .0729rem;
+                        color: var(--xf_white);
+                        font-size: .1875rem;
+                        overflow: hidden;
+                        z-index: 1809185784;
+                    }
+
+                    // 播放器图片
+                    .music_picture {
+                        margin: .1094rem auto;
+                        border-radius: 50%;
+                        height: 1.1719rem;
+                        width: 1.1719rem;
+                        padding: .0521rem;
+                        overflow: hidden;
+
+                        .music-img {
+                            display: block;
+
+                            img {
+                                width: 100%;
+                                border-radius: 50%;
+                                -webkit-animation: xfmusic 15s linear infinite;
+                                animation: xfmusic 15s linear infinite;
+                            }
+                        }
+
+                        @keyframes xfmusic {
+                            100% {
+                                -webkit-transform: rotate(1turn);
+                                transform: rotate(1turn);
+                            }
+                        }
+                    }
+
+                    .Song_Title {
+                        text-align: center;
+                        color: var(--xf_white);
+
+                        // 歌曲信息
+                        .music-info {
+                            width: 100%;
+
+                            // 歌名
+                            .name {
+                                font-size: .1563rem;
+                                height: .2083rem;
+                                font-weight: bold;
+                                overflow: hidden;
+                                white-space: nowrap;
+                                // 文字超出宽度则显示ellipsis省略号
+                                text-overflow: ellipsis;
+                            }
+
+                            // 作者
+                            .auther {
+                                margin-top: .0938rem;
+                                font-size: .1302rem;
+                                font-weight: normal;
+                                -webkit-white-space: nowrap;
+                                white-space: nowrap;
+                                // 文字超出宽度则显示ellipsis省略号
+                                -webkit-text-overflow: ellipsis;
+                                text-overflow: ellipsis;
+                            }
+                        }
+
+                        // 进度条
+                        .runningbox {
+                            margin: .2188rem 0;
+                            display: flex;
+                            align-items: center;
+                            font-size: .0625rem;
+                            width: 100%;
+
+                            // 播放时长
+                            .start,
+                            .end {
+                                margin: 0 .0625rem;
+                                -webkit-overflow: hidden;
+                                overflow: hidden;
+                                -webkit-white-space: nowrap;
+                                white-space: nowrap;
+                                // 文字超出宽度则显示ellipsis省略号
+                                -webkit-text-overflow: ellipsis;
+                                text-overflow: ellipsis;
+                            }
+
+                            // 进度条
+                            .running {
+                                width: 66%;
+                                height: .0156rem;
+                                border-radius: .0104rem;
+                                -webkit-background-color: var(--xf_glass_color_2);
+                                background-color: var(--xf_glass_color_2);
+
+                                // 时长
+                                .running1 {
+                                    position: relative;
+                                    height: 100%;
+                                    width: 50%;
+                                    border-radius: .0104rem;
+                                    background-color: var(--xf_white);
+
+                                    // 前面的圆
+                                    .circular {
+                                        position: absolute;
+                                        left: 97%;
+                                        top: 50%;
+                                        -webkit-transform: translateY(-50%);
+                                        transform: translateY(-50%);
+                                        display: block;
+                                        height: .0417rem;
+                                        width: .0417rem;
+                                        border-radius: 50%;
+                                        background-color: var(--xf_white);
+                                    }
+                                }
+                            }
+                        }
+
+
+                        // 音乐播放器按钮
+                        .music_but {
+                            display: flex;
+                            justify-content: space-evenly;
+                            width: 100%;
+
+                            li {
+                                color: var(--xf_white);
+                                height: .3021rem;
+                                width: .3021rem;
+                                font-size: .0938rem;
+                                line-height: .3021rem;
+                                border-radius: 50%;
+                                border: 1px solid var(--xf_glass_color_2);
+                                border-style: var(--xf_glass_color_2);
+                                -webkit-background-color: var(--xf_glass_color_4);
+                                background-color: var(--xf_glass_color_4);
+                                -webkit-backdrop-filter: var(--xf_glass_blur);
+                                backdrop-filter: var(--xf_glass_blur);
+                                -webkit-transition: color .5s;
+                                transition: color .5s;
+
+                                &:hover {
+                                    color: #9cdef8;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // 我的好友
+                .xf_friends {
+                    height: 100%;
+                    width: 100%;
+                    padding: .1042rem;
+                    -webkit-transform: rotateY(180deg);
+                    transform: rotateY(180deg);
+
+                    // 标题
+                    h4 {
+                        display: flex;
+                        position: relative;
+                        height: 0.2344rem;
+                        font-family: 'jiangnan';
+                        font-size: 0.1615rem;
+                        color: var(--xf_white);
+                        border-bottom: 0.0104165rem solid var(--xf_white);
+                        -webkit-text-shadow: var(--xf_text_shadow);
+                        text-shadow: var(--xf_text_shadow);
+
+                        // 箭头
+                        &::after {
+                            content: '';
+                            width: 0.0781rem;
+                            height: 0.0781rem;
+                            position: absolute;
+                            right: 0;
+                            top: .0365rem;
+                            border-bottom: 0.0156rem solid var(--xf_white);
+                            border-right: 0.0156rem solid var(--xf_white);
+                            -moz-transform: rotateZ(-45deg);
+                            -webkit-transform: rotateZ(-45deg);
+                            transform: rotateZ(-45deg);
+                        }
+
+                        // 图标
+                        img {
+                            width: .1771rem;
+                            height: .1771rem;
+                            margin-right: .026rem;
+                        }
+                    }
+
+                    // 好友
+                    .xf_friend_YYDS {
+                        height: 90%;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        padding: .026rem 0;
+                        -webkit-overflow-y: auto;
+                        overflow-y: auto;
+
+                        li {
+                            display: flex;
+                            flex-direction: column;
+                            flex-wrap: wrap;
+                            justify-content: center;
+                            align-content: flex-start;
+                            margin-top: .0885415rem;
+                            width: 95%;
+                            height: .390625rem;
+                            -webkit-background-color: var(--xf_glass_color);
+                            background-color: var(--xf_glass_color);
+                            border-radius: .0521rem;
+                            color: var(--xf_white);
+                            -webkit-text-shadow: var(--xf_text_shadow);
+                            text-shadow: var(--xf_text_shadow);
+                            -ms-transition: box-shadow .3s;
+                            -webkit-transition: box-shadow .3s;
+                            transition: box-shadow .3s;
+
+                            &:hover {
+                                -webkit-box-shadow: var(--xf_shadow_friend);
+                                box-shadow: var(--xf_shadow_friend);
+                            }
+
+                            a {
+                                display: flex;
+                                flex-direction: column;
+                                flex-wrap: wrap;
+                                justify-content: center;
+                                align-content: flex-start;
+                                width: 100%;
+                                height: 100%;
+
+                                // 去除鼠标经过颜色
+                                &:hover {
+                                    color: var(--xf_white);
+                                }
+
+                                // 组合样式
+                                img,
+                                h5,
+                                p {
+                                    margin-left: .026rem;
+                                }
+
+                                h5,
+                                p {
+                                    width: 75%;
+                                    -webkit-overflow: hidden;
+                                    overflow: hidden;
+                                    -webkit-white-space: nowrap;
+                                    white-space: nowrap;
+                                    // 文字超出宽度则显示ellipsis省略号
+                                    -webkit-text-overflow: ellipsis;
+                                    text-overflow: ellipsis;
+                                }
+
+                                // 头像
+                                img {
+                                    height: .3021rem;
+                                    width: .3021rem;
+                                    border-radius: 50%;
+                                    border: .0052rem solid var(--xf_glass_color_2);
+                                }
+
+                                // 名字
+                                h5 {
+                                    font-size: .0951rem;
+                                }
+
+                                // 介绍
+                                p {
+                                    margin-top: .026rem;
+                                    font-size: .0684373rem;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+// 底部盒子
+.xf_footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3.6458vw;
+    -moz-border-top: .1042vw solid var(--xf_glass_color_3);
+    -webkit-border-top: .1042vw solid var(--xf_glass_color_3);
+    border-top: .1042vw solid var(--xf_glass_color_3);
+    border-radius: 0 !important;
+    line-height: .5208vw;
+    text-align: center;
+    font-size: 1.4583vw;
+    color: var(--xf_white);
+    z-index: 99;
+
+    p {
+        line-height: 3.6458vw;
+
+        a {
+            &:nth-child(1) {
+                font-weight: 600;
+                color: var(--xf_white);
+                background: -ms-linear-gradient(45deg, var(--xf_gradient_5));
+                background: -webkit-linear-gradient(45deg, var(--xf_gradient_5));
+                background: -moz-linear-gradient(45deg, var(--xf_gradient_5));
+                background: linear-gradient(45deg, var(--xf_gradient_5));
+                color: transparent;
+                -webkit-background-clip: text;
+                background-clip: text;
+                -moz-animation: xf-copy 20s linear infinite;
+                -webkit-animation: xf-copy 20s linear infinite;
+                animation: xf-copy 20s linear infinite;
+            }
+
+            &:nth-child(2):hover {
+                color: var(--xf_white);
+            }
+        }
+
+        &:nth-child(2) {
+            position: absolute;
+            top: .0417rem;
+            right: .2604rem * 6.5;
+            font-size: .0729rem;
+
+            a {
+                color: var(--xf_grey);
+            }
+
+            img {
+                position: absolute;
+                top: .1484rem;
+                left: -0.0938rem;
+                width: .0729rem;
+                margin-right: .026rem;
+            }
+        }
+
+        &:nth-child(3) {
+            position: absolute;
+            top: .0417rem;
+            right: .2604rem;
+            font-size: .0729rem;
+
+            a {
+                color: var(--xf_grey);
+            }
+
+            img {
+                position: absolute;
+                top: .1484rem;
+                left: -0.0938rem + -0.0104rem;
+                width: .0729rem;
+                margin-right: .026rem;
+            }
+        }
+
+        @keyframes xf-copy {
+            100% {
+                background-position: 104.1667vw 0;
+            }
+        }
+    }
+}
+
+// 隐藏PC端标页码
+.xf-swiper-pagination {
+    display: none;
+}

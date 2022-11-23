@@ -1,0 +1,189 @@
+.lyear-wrapper {
+    position: relative;
+}
+
+.lyear-login {
+    display: flex !important;
+    min-height: 100vh;
+    align-items: center !important;
+    justify-content: center !important;
+}
+
+.lyear-login:after {
+    content: '';
+    min-height: inherit;
+    font-size: 0;
+}
+
+.login-center {
+    background: #fff;
+    min-width: 29.25rem;
+    padding: 2.14286em 3.57143em;
+    border-radius: 3px;
+    margin: 2em;
+}
+
+.login-header {
+    margin-bottom: 1.5rem !important;
+}
+
+.login-center .has-feedback.feedback-left .form-control {
+    padding-left: 38px;
+    padding-right: 12px;
+}
+
+.login-center .has-feedback.feedback-left .form-control-feedback {
+    left: 0;
+    right: auto;
+    width: 38px;
+    height: 38px;
+    line-height: 38px;
+    z-index: 4;
+    color: #dcdcdc;
+}
+
+.login-center .has-feedback.feedback-left.row .form-control-feedback {
+    left: 15px;
+}
+
+/* 渐变背景 */
+/* body {
+    background: -moz-linear-gradient(var(--xf-Gradient-background-1));
+    background: -webkit-linear-gradient(var(--xf-Gradient-background-1));
+    background: linear-gradient(var(--xf-Gradient-background-1));
+    background-size: 300% 300%;
+    -webkit-animation: xfgradient 15s ease infinite;
+    animation: xfgradient 15s ease infinite;
+} */
+
+body {
+    overflow: hidden;
+}
+
+body::before {
+    content: '';
+    display: block;
+    width: 100vw;
+    height: 100vh;
+    background: url(../images/snow-background.webp) no-repeat center center;
+    background-size: cover;
+    position: absolute;
+    -webkit-opacity: .9;
+    opacity: .9;
+}
+
+@-webkit-keyframes xfgradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+@keyframes xfgradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+.login-center {
+    position: relative;
+    -webkit-background-color: rgba(255, 255, 255, .5);
+    background-color: rgba(255, 255, 255, .5);
+    -webkit-backdrop-filter: var(--xf_glass_blur);
+    backdrop-filter: var(--xf_glass_blur);
+    -webkit-box-shadow: var(--xf_glass);
+    box-shadow: var(--xf_glass);
+    border-radius: 15px;
+}
+
+.login-header img {
+    width: 70px;
+}
+
+.login-header h1 {
+    font-family: '楷体';
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #8177db;
+    background-image: -webkit-linear-gradient(left, #6a73f3, #9a6af3, #6a73f3);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: var(--xf_text_shadow);
+}
+
+.col-sm-12 .m-b-0 {
+    text-shadow: var(--xf_text_shadow);
+}
+
+.col-sm-12 .m-b-0 a {
+    color: #8177db;
+    -webkit-transition: color .5;
+    transition: color .5;
+}
+
+.col-sm-12 .m-b-0 a:hover {
+    color: #000;
+}
+
+.login-center .has-feedback.feedback-left .form-control {
+    -webkit-background-color: rgba(218, 214, 255, .3);
+    background-color: rgba(218, 214, 255, .3);
+    -webkit-border-color: rgba(129, 119, 219, .3);
+    border-color: rgba(129, 119, 219, .3);
+    color: #8177db;
+}
+
+.login-center .has-feedback.feedback-left .form-control:focus {
+    -webkit-border-color: rgba(255, 255, 255, .3);
+    border-color: rgba(255, 255, 255, .3);
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .03), 0 0 8px #8177db;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .03), 0 0 8px #8177db
+}
+
+.login-center .has-feedback.feedback-left .form-control::-webkit-input-placeholder {
+    color: rgba(97, 86, 192, .5);
+}
+
+.login-center .has-feedback.feedback-left .form-control::-moz-input-placeholder {
+    color: rgba(97, 86, 192, .5);
+}
+
+.login-center .has-feedback.feedback-left .form-control::-ms-input-placeholder {
+    color: rgba(97, 86, 192, .5);
+}
+
+.login-center .has-feedback.feedback-left .form-control-feedback {
+    color: #8177db;
+}
+
+footer {
+    font-size: 1.5rem;
+}
+
+.canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: block;
+    pointer-events: none;
+    width: 100%;
+    height: 100%;
+    z-index: 9;
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>更新日志 - 毛玻璃拟态UI后台管理系统</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="icon/iconfont.css">
+    <link rel="stylesheet" href="css/site.css">
+</head>
+
+<body>
+    <div class="lyear-layout-web">
+        <div class="lyear-layout-container">
+            <!--左侧导航-->
+            <aside class="lyear-layout-sidebar xf_glass">
+
+                <!-- logo -->
+                <div id="logo" class="sidebar-header">
+                    <a href="index.html"><img src="images/admin-logo.png" alt="LOGO" /></a>
+                </div>
+                <div class="lyear-layout-sidebar-scroll">
+
+                    <nav class="sidebar-main">
+                        <ul class="nav nav-drawer">
+                            <li class="nav-item"><a href="index.html"><i class="iconfont icon-shouyefill"></i> 后台首页</a></li>
+                            <li class="nav-item"><a href="set.html"><i class="iconfont icon-huaban34"></i> 基础设置</a></li>
+                            <li class="nav-item"><a href="inf.html"><i class="iconfont icon-wodexinxi_jibenxinxi"></i> 我的信息</a></li>
+                            <li class="nav-item"><a href="site.html"><i class="iconfont icon-wangzhangaofang"></i> 旗下站点</a></li>
+                            <li class="nav-item"><a href="msg.html"><i class="iconfont icon-liuyan"></i> 留言列表</a></li>
+                            <li class="nav-item"><a href="friend.html"><i class="iconfont icon-tianjiahaoyou-"></i> 添加好友</a></li>
+                            <li class="nav-item xf-active"><a href="update.html"><i class="iconfont icon-banbengengxin"></i> 更新日志</a></li>
+                        </ul>
+                    </nav>
+
+            </aside>
+            <!--End 左侧导航-->
+
+            <!--头部信息-->
+            <header class="lyear-layout-header xf_glass">
+
+                <nav class="navbar navbar-default">
+                    <div class="topbar">
+
+                        <div class="topbar-left">
+                            <div class="lyear-aside-toggler">
+                                <span class="lyear-toggler-bar"></span>
+                                <span class="lyear-toggler-bar"></span>
+                                <span class="lyear-toggler-bar"></span>
+                            </div>
+                            <div class="xf_search">
+                                <form action="https://www.baidu.com/baidu" target="_blank">
+                                    <input type="submit" value=""><i class="iconfont icon-sousuo"></i>
+                                    <input type="text" name="word" size="30" autocomplete="off" placeholder="百度一下">
+                                </form>
+                            </div>
+                        </div>
+
+                        <ul class="topbar-right">
+                            <li class="dropdown dropdown-profile">
+                                <a href="javascript:void(0)" data-toggle="dropdown" aria-expanded="false">
+                                    <img class="img-avatar img-avatar-48 m-r-10" th:src="${'https://q2.qlogo.cn/headimg_dl?dst_uin='+session.qq+'&spec=100'}" alt="admin" />
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li> <a href="pwd.html"><i class="mdi mdi-lock-outline"></i> 修改密码</a> </li>
+                                    <li> <a href="/logout"><i class="mdi mdi-logout-variant"></i> 退出登录</a> </li>
+                                </ul>
+                            </li>
+                            <li class="xf-author"><a href="tencent://message/?uin=1809185784&Site=AicTeam&Menu=yes"
+                                                     target="_blank" rel="noopener noreferrer"
+                                                     class="tooltips iconfont icon-xiaoxi"><span>联系作者</span></a></li>
+                        </ul>
+
+                    </div>
+                </nav>
+
+            </header>
+            <!--End 头部信息-->
+
+            <!--页面主要内容-->
+            <main class="lyear-layout-content">
+
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 style="line-height: 1.5rem;">更新日志&nbsp;</h4><p class="label label-pink">毛玻璃UI</p>
+                                </div>
+                                <iframe src="https://www.xfabe.com/Glass-ui-update/update.html" frameborder="0" style="width: 100%; height: 50rem;" frameborder="1" align="center"></iframe>
+                            </div>
+                        </div>
+                    </div>
+
+                    <footer class="col-md-12">
+                        <p>Copyright &copy; 2022 <a href="https://www.xfabe.com" target="_blank" rel="noopener noreferrer">小枫网络</a> | by：<a href="tencent://message/?uin=1809185784&Site=AicTeam&Menu=yes" target="_blank" rel="noopener noreferrer">小枫</a></p>
+                    </footer>
+                </div>
+
+            </main>
+            <!--End 页面主要内容-->
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/perfect-scrollbar.min.js"></script>
+    <script type="text/javascript" src="js/main.min.js"></script>
+    <script type="text/javascript" src="js/fireworks.js"></script>
+</body>
+
+</html>

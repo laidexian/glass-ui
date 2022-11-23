@@ -1,0 +1,1809 @@
+// 引入主体样式和字体样式
+@import url(font.css);
+@import url(main.css);
+@import url(normalize.css);
+
+// 移动端布局
+body {
+    background: url(../images/background5.webp) no-repeat center center;
+    background-size: cover;
+    height: 100vh;
+    background-color: var(--xf-black);
+    overflow-x: hidden;
+    overflow-y: hidden;
+
+    // 蒙版
+    &::before {
+        content: '';
+        display: block;
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        -ms-background-color: var(--xf_glass_color_1);
+        -moz-background-color: var(--xf_glass_color_1);
+        -webkit-background-color: var(--xf_glass_color_1);
+        background-color: var(--xf_glass_color_1);
+    }
+
+    // 触发微信弹窗图片的样式
+    #xf_wxImg {
+        border-radius: .026rem * 3;
+        cursor: pointer;
+        -webkit-transition: all .3s;
+        transition: all .3s;
+    }
+
+    #xf_wxImg:hover {
+        -webkit-opacity: .7;
+        opacity: .7;
+    }
+
+    //弹窗背景
+    .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        padding-top: .5208rem * 5;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        -webkit-background-color: rgba(0, 0, 0, .8);
+        background-color: rgba(0, 0, 0, .8);
+        -webkit-backdrop-filter: var(--xf_glass_blur);
+        backdrop-filter: var(--xf_glass_blur);
+        z-index: 100;
+    }
+
+    // 图片大小
+    .modal-content {
+        margin: auto;
+        display: block;
+        width: 60%;
+        max-width: 8rem;
+    }
+
+    // 文本内容样式
+    #caption {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 3.6458rem;
+        text-align: center;
+        color: var(--xf_grey);
+        padding: .0521rem * 3 0;
+        height: .7813rem * 3;
+        font-size: .125rem * 3;
+    }
+
+    // 弹出动画
+    .modal-content,
+    #caption {
+        -webkit-animation-name: xf-wximg;
+        -webkit-animation-duration: 0.6s;
+        animation-name: xf-wximg;
+        animation-duration: .6s;
+    }
+
+    @-webkit-keyframes xf-wximg {
+        from {
+            -webkit-transform: scale(0)
+        }
+
+        to {
+            -webkit-transform: scale(1)
+        }
+    }
+
+    @keyframes xf-wximg {
+        from {
+            transform: scale(0)
+        }
+
+        to {
+            transform: scale(1)
+        }
+    }
+
+    // 关闭按钮
+    .close {
+        position: absolute;
+        top: .0781rem * 3;
+        right: .1823rem * 3;
+        color: #f1f1f1;
+        font-size: .7rem;
+        font-weight: bold;
+        -webkit-transition: 0.3s;
+        transition: 0.3s;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+    // 小屏幕中图片宽度为 100%
+    @media only screen and (max-width: 700px) {
+        .modal-content {
+            width: 100%;
+        }
+    }
+
+    // 超级大盒子
+    .big_box {
+        width: 100%;
+        // perspective: 800px;
+
+        // 顶部盒子
+        .xf_hd_box {
+            position: relative;
+            width: 100%;
+            height: 1.5rem;
+            margin-top: .6rem;
+
+            // 三点
+            &::after {
+                content: " ";
+                display: inline-block;
+                position: absolute;
+                right: .9rem;
+                top: 50%;
+                -webkit-transform: translateY(-150%);
+                transform: translateY(-150%);
+                width: .2rem;
+                height: .2rem;
+                -webkit-border-radius: 50%;
+                border-radius: 50%;
+                background: #da5e46;
+                -webkit-box-shadow: 3.5vw 0 #d5b67a, 6.5vw 0 #0078ff;
+                box-shadow: 3.5vw 0 #d5b67a, 6.5vw 0 #0078ff;
+                border-color: transparent;
+            }
+
+            h1,
+            h2 {
+                position: absolute;
+                left: 0;
+                top: 0;
+                font-family: 'jianyuanti';
+                font-size: 1.1rem;
+                font-weight: bold;
+                color: var(--xf_white);
+                width: 80%;
+                overflow: hidden;
+                white-space: nowrap;
+                // 文字超出宽度则显示ellipsis省略号
+                text-overflow: ellipsis;
+                padding-left: .2rem;
+            }
+
+            h1 {
+                z-index: 3;
+                background-image: -o-linear-gradient(right, var(--xf_gradient_2));
+                background-image: -ms-linear-gradient(right, var(--xf_gradient_2));
+                background-image: -moz-linear-gradient(right, var(--xf_gradient_2));
+                background-image: -webkit-linear-gradient(right, var(--xf_gradient_2));
+                -webkit-text-fill-color: transparent;
+                -webkit-background-clip: text;
+                background-clip: text;
+                -moz-overflow: hidden;
+                -webkit-overflow: hidden;
+                overflow: hidden;
+
+                // 鼠标选中样式
+                &::selection {
+                    -webkit-background: transparent;
+                    -webkit-background: var(--xf_lilac_colour);
+                    background: var(--xf_lilac_colour);
+                }
+
+                &::-webkit-selection {
+                    -webkit-background: transparent;
+                    -webkit-background: var(--xf_lilac_colour);
+                    background: var(--xf_lilac_colour);
+                }
+
+                &::-moz-selection {
+                    -webkit-background: transparent;
+                    -webkit-background: var(--xf_lilac_colour);
+                    background: var(--xf_lilac_colour);
+                }
+            }
+
+            h2 {
+                z-index: 2;
+                -webkit-border-radius: 0 .8rem .8rem 0;
+                border-radius: 0 .8rem .8rem 0;
+                color: transparent;
+                -webkit-text-shadow: -0.0137rem * 2.5 -0.0076rem * 2.5 .0365rem * 2.5 var(--xf_glass_color_3), .0078rem * 2.5 .0135rem * 2.5 .0365rem * 2.5 rgba(0, 0, 0, .4);
+                text-shadow: -0.0137rem * 2.5 -0.0076rem * 2.5 .0365rem * 2.5 var(--xf_glass_color_3), .0078rem * 2.5 .0135rem * 2.5 .0365rem * 2.5 rgba(0, 0, 0, .4);
+            }
+
+            // 搜索栏
+            .xf_search {
+                display: none;
+            }
+        }
+
+        // 版心
+        .main_content {
+            margin: 0 auto;
+            width: 95%;
+
+            .xf_left_box,
+            .xf_center_box,
+            .xf_right_box {
+                width: 100% !important;
+            }
+
+            // 左侧的盒子
+            .xf_left_box {
+                padding: 0.2rem 0;
+                width: 100%;
+                height: 100%;
+
+                // 左侧顶部盒子
+                .xf_leftbox_top {
+                    height: 2.4323rem * 3.2;
+                    padding: .1615rem * 3 .099rem * 3;
+
+                    // 时间
+                    .xf_time {
+                        height: 1.4219rem * 3;
+                        padding: .1875rem * 3 .1458331rem * 3;
+
+                        // 时钟
+                        .clock {
+                            position: relative;
+                            float: left;
+                            display: flex;
+                            width: 1.0938rem * 3;
+                            height: 1.0938rem * 3;
+                            grid-column: 2/3;
+                            grid-row: 1/3;
+                            justify-self: center;
+                            border-radius: 50%;
+                            justify-content: center;
+                            align-items: center;
+
+                            // 蒙版
+                            &::before {
+                                content: '';
+                                position: absolute;
+                                left: 0;
+                                bottom: 0;
+                                width: 1.0938rem * 3;
+                                height: 1.0938rem * 3;
+                                background: url(../images/Gradual-circle.svg) no-repeat;
+                                background-size: cover;
+                            }
+
+                            &::after {
+                                content: '';
+                                position: absolute;
+                                left: 50%;
+                                bottom: 50%;
+                                -webkit-transform: translate(-50%, 50%);
+                                transform: translate(-50%, 50%);
+                                width: .7188rem * 3;
+                                height: .7188rem * 3;
+                                -webkit-background-color: var(--xf_glass_color);
+                                background-color: var(--xf_glass_color);
+                                border-radius: 50%;
+                                -webkit-box-shadow: 0 0 3px 3px var(--xf_glass_color_1);
+                                box-shadow: 0 0 3px 3px var(--xf_glass_color_1);
+                            }
+
+                            // 圆中心
+                            .point {
+                                position: absolute;
+                                width: .0521rem * 3;
+                                height: .0521rem * 3;
+                                border-radius: 50%;
+                                background-color: var(--xf_white);
+                                z-index: 10;
+                            }
+
+                            // 指针
+                            .hand {
+                                position: absolute;
+                                bottom: 50%;
+                                -webkit-transform-origin: bottom;
+                                transform-origin: bottom;
+                                border-radius: .0521rem * 3;
+                                z-index: 9;
+                            }
+
+                            // 时针
+                            .hours {
+                                width: .0208rem * 3;
+                                height: .2604rem * 3;
+                                background-color: #fceb92;
+                            }
+
+                            // 分针
+                            .minutes {
+                                width: .0156rem * 3;
+                                height: .3906rem * 3;
+                                background-color: #2580b4;
+                            }
+
+                            // 秒针
+                            .seconds {
+                                width: .0104rem * 3;
+                                height: .4427rem * 3;
+                                background-color: var(--xf_white);
+                            }
+
+                            // 四个时间
+                            .marker {
+                                position: relative;
+                                border-radius: 50%;
+                                width: 97%;
+                                height: 97%;
+
+                                .marker_time {
+                                    position: absolute;
+                                    border-radius: 50%;
+                                    -webkit-background-color: var(--xf_glass_color_3);
+                                    background-color: var(--xf_glass_color_3);
+                                }
+
+                                .marker__1,
+                                .marker__2 {
+                                    width: .0156rem * 3;
+                                    height: .0521rem * 3;
+                                    left: 50%;
+                                    -webkit-transform: translateX(-50%);
+                                    transform: translateX(-50%);
+                                }
+
+                                .marker__3,
+                                .marker__4 {
+                                    width: .0521rem * 3;
+                                    height: .0156rem * 3;
+                                    top: 50%;
+                                    -webkit-transform: translateY(-50%);
+                                    transform: translateY(-50%);
+                                }
+
+                                .marker__1 {
+                                    top: 3%;
+                                }
+
+                                .marker__2 {
+                                    bottom: 6%;
+                                }
+
+                                .marker__3 {
+                                    left: 3%;
+                                }
+
+                                .marker__4 {
+                                    right: 6%;
+                                }
+                            }
+                        }
+
+                        // 显示时间
+                        .display_time {
+                            display: flex;
+                            flex-direction: column;
+                            font-family: 'jianyuanti';
+                            color: var(--xf_white);
+                            -webkit-text-shadow: var(--xf_text_shadow);
+                            text-shadow: var(--xf_text_shadow);
+
+                            .xf_time_1,
+                            .xf_time_2,
+                            .xf_time_3 {
+                                text-align: center;
+                                font-weight: normal;
+                            }
+
+                            .xf_time_1 {
+                                font-size: .375rem * 3;
+                            }
+
+                            .xf_time_2 {
+                                margin: .0365rem * 3 0;
+                                font-size: .1823rem * 3;
+                            }
+
+                            .xf_time_3 {
+                                font-size: .1823rem * 3;
+                            }
+                        }
+                    }
+
+                    // 气温
+                    .xf_weather {
+                        margin-top: .1458331rem * 3;
+                        height: .5521rem * 3.5;
+                        -webkit-overflow: hidden;
+                        overflow: hidden;
+
+                        #he-plugin-standard {
+                            position: relative;
+                            width: 100% !important;
+                            height: 100% !important;
+
+                            .wv-v-h-location {
+                                position: absolute;
+                                left: .0521rem * 3;
+                                top: .026rem * 3;
+                                padding: 0;
+                                width: 100%;
+                                font-size: .07296rem * 3;
+
+                                span {
+                                    // text-decoration: underline var(--xf_white);
+                                    -webkit-opacity: .7;
+                                    opacity: .7;
+                                }
+
+                                a {
+                                    display: none;
+                                }
+                            }
+
+                            .wv-lt-refresh {
+                                display: none;
+                            }
+
+                            .wv-f-row {
+                                display: flex;
+
+                                .wv-f-col-4 {
+                                    position: relative;
+                                    flex: 1;
+                                    display: flex;
+                                    flex-direction: column;
+                                    flex-wrap: nowrap;
+                                    align-items: center;
+                                    height: 0.5521rem * 3 !important;
+
+                                    li {
+                                        flex: 1;
+                                        height: 0 !important;
+
+                                        &:nth-child(1),
+                                        &:nth-child(3) {
+                                            position: absolute;
+                                            bottom: 0;
+                                            left: 0;
+                                            width: 100%;
+                                            height: .1563rem * 3 !important;
+
+                                            a {
+                                                font-size: .0938rem * 3;
+                                                -webkit-text-shadow: var(--xf_text_shadow);
+                                                text-shadow: var(--xf_text_shadow);
+                                            }
+                                        }
+
+                                        &:nth-child(1) a {
+                                            float: left;
+                                            margin-left: 15%;
+                                        }
+
+                                        &:nth-child(3) a {
+                                            float: right;
+                                            margin-right: 15%;
+                                        }
+
+                                        &:nth-child(2) {
+                                            a img {
+                                                width: .3125rem * 3;
+                                            }
+                                        }
+                                    }
+
+                                    .wv-f-forecast-tmp {
+
+                                        // 空气状态
+                                        span {
+                                            display: none;
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // 图标轮播
+                .xf_ico_banner {
+                    margin-top: .3rem;
+                    position: relative;
+                    width: 100%;
+                    height: .484375rem * 3;
+                    -webkit-overflow: hidden;
+                    overflow: hidden;
+
+                    .swiper-wrapper .swiper-slide {
+                        ul {
+                            display: flex;
+                            -moz-justify-content: space-around;
+                            -webkit-justify-content: space-around;
+                            justify-content: space-around;
+                            padding: 0 .1042rem * 3;
+
+                            li {
+                                position: relative;
+                                margin-top: .0521rem * 3;
+                                width: .349rem * 3.5;
+                                height: .349rem * 3.5;
+                                border-radius: 50%;
+                                display: flex;
+                                -moz-items: center;
+                                -webkit-items: center;
+                                align-items: center;
+                                -moz-justify-content: space-around;
+                                -webkit-justify-content: space-around;
+                                justify-content: space-around;
+
+                                a img,
+                                #xf_wxImg {
+                                    position: absolute;
+                                    left: 0;
+                                    bottom: 0;
+                                    width: 100%;
+                                    height: 100%;
+                                    padding: .7813vw * 2.5;
+                                }
+
+                                // 微信图片
+                                #xf_wxImg {
+                                    z-index: 1;
+                                    -webkit-opacity: 0;
+                                    opacity: 0;
+                                }
+                            }
+                        }
+                    }
+
+                    // 箭头
+                    .swiper-button-next-ico,
+                    .swiper-button-prev-ico {
+                        height: 1.5625vw * 3.2;
+                        width: 1.5625vw * 3.2;
+                        -webkit-color: var(--xf_glass_color_3);
+                        color: var(--xf_glass_color_3);
+                        --swiper-navigation-size: 1.5625vw * 4;
+                        margin: -0.2rem;
+                    }
+                }
+            }
+
+            // 中间的盒子
+            .xf_center_box {
+                // position: relative;
+                width: 100%;
+                padding: .2rem 0;
+                margin: 0 5%;
+                // box-sizing: border-box;
+
+                // 名片盒子
+                .xf_jieshao {
+                    display: flex;
+                    width: 100%;
+                    box-sizing: border-box;
+                    padding: .25rem;
+                    color: var(--xf_white);
+                    text-shadow: var(--xf_text_shadow);
+
+                    // 头像
+                    .xf_tx {
+                        width: 2.8rem;
+                        border-radius: .3rem;
+                        overflow: hidden;
+
+                        img {
+                            width: 100%;
+                            height: 100%;
+                        }
+                    }
+
+                    // 姓名
+                    .name {
+                        font-family: "楷体";
+                        -ms-flex: 2;
+                        flex: 2;
+                        margin-left: .4rem;
+                        width: 50%;
+
+                        small {
+                            font-size: .3rem;
+                            overflow: hidden;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                        }
+
+                        h3 {
+                            font-family: 'jianyuanti';
+                            margin: .3rem 0;
+                            font-weight: normal;
+                            font-size: .7rem;
+                            overflow: hidden;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                        }
+
+                        p {
+                            font-size: .4rem;
+                            padding: 0.12rem;
+                            -moz-background-color: var(--xf_glass_color);
+                            -webkit-background-color: var(--xf_glass_color);
+                            background-color: var(--xf_glass_color);
+                            -webkit-border-radius: 0.1198rem * 3;
+                            border-radius: 0.1198rem * 3;
+                            -moz-box-shadow: 0.0052rem * 3 0.0052rem * 3 0.0052rem * 3 0 rgba(0, 0, 0, 0.2);
+                            -webkit-box-shadow: 0.0052rem * 3 0.0052rem * 3 0.0052rem * 3 0 rgba(0, 0, 0, 0.2);
+                            box-shadow: 0.0052rem * 3 0.0052rem * 3 0.0052rem * 3 0 rgba(0, 0, 0, 0.2);
+                            overflow: hidden;
+                            white-space: nowrap;
+                            text-overflow: ellipsis;
+                        }
+                    }
+
+                    // 转发&留言
+                    .icon-liuyanban-05,
+                    .xf_zhuanfa {
+                        width: .7rem;
+                        height: .7rem;
+                        font-size: .8rem;
+                    }
+                }
+
+                // 站点和运势按钮
+                .xf_but {
+                    font-family: "Microsoft Yahei", "微软雅黑";
+                    margin: .1302rem auto;
+                    text-align: center;
+                    padding-bottom: .25rem;
+
+                    .but_site,
+                    .but_fortune {
+                        position: relative;
+                        display: inline-block;
+                        height: .25rem * 3.5;
+                        width: .9375rem * 3.5;
+                        font-size: .1042rem * 3.5;
+                        line-height: .25rem * 3.5;
+                        margin: 0 .0938rem * 3.5;
+                        color: var(--xf_white);
+                        -moz-border-radius: .25rem * 3.5;
+                        -webkit-border-radius: .25rem * 3.5;
+                        border-radius: .25rem * 3.5;
+
+                        // 渐变背景
+                        div {
+                            position: absolute;
+                            left: 0;
+                            bottom: 0;
+                            width: 100%;
+                            height: 100%;
+                            -moz-border-radius: .25rem * 3.5;
+                            -webkit-border-radius: .25rem * 3.5;
+                            border-radius: .25rem * 3.5;
+                            z-index: -1;
+                        }
+
+                        // 鼠标经过动画
+                        &:hover {
+                            div {
+                                -moz-animation: xf-filter forwards .5s;
+                                -webkit-animation: xf-filter forwards .5s;
+                                animation: xf-filter forwards .5s;
+
+                                @keyframes xf-filter {
+                                    0% {
+                                        -webkit-filter: blur(3px);
+                                        filter: blur(3px);
+                                    }
+
+                                    100% {
+                                        -webkit-filter: blur(0);
+                                        filter: blur(0);
+                                        -moz-box-shadow: var(--xf_glass_shadow);
+                                        -webkit-box-shadow: var(--xf_glass_shadow);
+                                        -ms-box-shadow: var(--xf_glass_shadow);
+                                        -o-box-shadow: var(--xf_glass_shadow);
+                                        box-shadow: var(--xf_glass_shadow);
+                                    }
+                                }
+
+                                @-webkit-keyframes xf-filter {
+                                    0% {
+                                        -webkit-filter: blur(3px);
+                                        filter: blur(3px);
+                                    }
+
+                                    100% {
+                                        -webkit-filter: blur(0);
+                                        filter: blur(0);
+                                        -moz-box-shadow: var(--xf_glass_shadow);
+                                        -webkit-box-shadow: var(--xf_glass_shadow);
+                                        -ms-box-shadow: var(--xf_glass_shadow);
+                                        -o-box-shadow: var(--xf_glass_shadow);
+                                        box-shadow: var(--xf_glass_shadow);
+                                    }
+                                }
+                            }
+                        }
+
+                        // 鼠标点击动画
+                        &:active {
+                            div {
+                                -moz-animation: xf-active forwards .5s;
+                                -webkit-animation: xf-active forwards .5s;
+                                animation: xf-active forwards .5s;
+
+                                @keyframes xf-active {
+                                    0% {
+                                        -webkit-filter: blur(5px);
+                                        filter: blur(5px);
+                                        -o-box-shadow: var(--xf_glass_shadow_inset);
+                                        -ms-box-shadow: var(--xf_glass_shadow_inset);
+                                        -moz-box-shadow: var(--xf_glass_shadow_inset);
+                                        -webkit-box-shadow: var(--xf_glass_shadow_inset);
+                                        box-shadow: var(--xf_glass_shadow_inset);
+                                    }
+
+                                    100% {
+                                        -webkit-filter: blur(0);
+                                        filter: blur(0);
+                                        -o-box-shadow: var(--xf_glass_shadow_inset);
+                                        -ms-box-shadow: var(--xf_glass_shadow_inset);
+                                        -moz-box-shadow: var(--xf_glass_shadow_inset);
+                                        -webkit-box-shadow: var(--xf_glass_shadow_inset);
+                                        box-shadow: var(--xf_glass_shadow_inset);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    .but_site {
+                        div {
+                            background-image: -o-linear-gradient(bottom, var(--xf_gradient_1));
+                            background-image: -ms-linear-gradient(bottom, var(--xf_gradient_1));
+                            background-image: -moz-linear-gradient(bottom, var(--xf_gradient_1));
+                            background-image: -webkit-linear-gradient(bottom, var(--xf_gradient_1));
+                            -webkit-filter: blur(3px);
+                            filter: blur(3px);
+                        }
+                    }
+
+                    .but_fortune {
+                        div {
+                            background-image: -o-linear-gradient(bottom, var(--xf_gradient_3));
+                            background-image: -ms-linear-gradient(bottom, var(--xf_gradient_3));
+                            background-image: -moz-linear-gradient(bottom, var(--xf_gradient_3));
+                            background-image: -webkit-linear-gradient(bottom, var(--xf_gradient_3));
+                            -webkit-filter: blur(3px);
+                            filter: blur(3px);
+                        }
+                    }
+                }
+
+                // 站点运势盒子
+                .center_bottom {
+                    margin: .5rem 0;
+
+                    // 旗下站点
+                    .xf_site {
+                        padding: 0.0885415rem * 3 0.125rem * 3;
+                        box-sizing: border-box;
+
+                        h4 {
+                            position: relative;
+                            height: .7rem;
+                            margin: 0;
+                            margin-block-start: 0;
+                            margin-block-end: 0;
+                            color: var(--xf_white) !important;
+                            border-bottom: 0.02rem solid var(--xf_white);
+                            text-shadow: var(--xf_text_shadow);
+
+                            font {
+                                font-family: 'jiangnan';
+                                font-size: .5rem;
+                                position: absolute;
+                                top: 50%;
+                                left: 0;
+                                transform: translateY(-50%);
+                                margin-left: .7rem;
+                            }
+
+                            // 站点图标
+                            &::before {
+                                content: '';
+                                width: .6rem;
+                                height: .6rem;
+                                position: absolute;
+                                top: 50%;
+                                left: 0;
+                                background: url(../images/site.png) no-repeat;
+                                background-size: cover;
+                                -webkit-transform: translateY(-55%);
+                                transform: translateY(-55%);
+                            }
+
+                            &::after {
+                                content: '';
+                                width: 0.0781rem * 3;
+                                height: 0.0781rem * 3;
+                                position: absolute;
+                                top: 50%;
+                                right: 0;
+                                border-bottom: 0.0156rem * 3 solid var(--xf_white);
+                                border-right: 0.0156rem * 3 solid var(--xf_white);
+                                -webkit-transform: translateY(-100%) rotateZ(45deg);
+                                transform: translateY(-100%) rotateZ(45deg);
+                            }
+                        }
+
+                        .web_site {
+                            display: flex;
+                            flex-wrap: wrap;
+                            justify-content: space-evenly;
+                            width: 100%;
+                            height: 4rem;
+                            padding: 0;
+                            margin: 0;
+                            margin-top: .3rem;
+                            overflow: hidden;
+
+                            &:hover {
+                                overflow: auto;
+                            }
+
+                            // 定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸
+                            &::-webkit-scrollbar {
+                                width: .0365rem;
+                                height: .0365rem;
+                                -webkit-background-color: transparent;
+                                background-color: transparent;
+                            }
+
+                            &::-webkit-scrollbar-track {
+                                border-radius: .0521rem;
+                                -webkit-background-color: transparent;
+                                background-color: transparent;
+                            }
+
+                            &::-webkit-scrollbar-thumb {
+                                border-radius: .0521rem;
+                                background-color: var(--xf_white);
+                            }
+
+                            li {
+                                display: inline-block;
+                                border-radius: .0520835rem * 3;
+                                width: 1.0417rem * 3;
+                                height: .375rem * 3;
+                                margin-top: .1042rem * 2;
+
+                                // 点击动画
+                                &:active {
+                                    -webkit-animation: site-active forwards .5s;
+                                    animation: site-active forwards .5s;
+
+                                    @keyframes site-active {
+                                        100% {
+                                            -moz-box-shadow: var(--xf_glass_shadow_inset);
+                                            -webkit-box-shadow: var(--xf_glass_shadow_inset);
+                                            -ms-box-shadow: var(--xf_glass_shadow_inset);
+                                            -o-box-shadow: var(--xf_glass_shadow_inset);
+                                            box-shadow: var(--xf_glass_shadow_inset);
+                                        }
+                                    }
+                                }
+
+                                a {
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    text-align: center;
+                                    width: 100%;
+                                    height: 100%;
+                                    font-size: .1146rem * 3;
+
+                                    &:hover span {
+                                        -webkit-text-shadow: none;
+                                        text-shadow: none;
+                                    }
+
+                                    img {
+                                        width: .1667rem * 3;
+                                        width: .1667rem * 3;
+                                        margin-left: .0208rem * 3;
+                                    }
+
+                                    span {
+                                        margin: 0 .0208rem * 3;
+                                        -webkit-overflow: hidden;
+                                        overflow: hidden;
+                                        -webkit-text-overflow: ellipsis;
+                                        text-overflow: ellipsis;
+                                        display: -webkit-box;
+                                        -webkit-box-orient: vertical;
+                                        -webkit-line-clamp: 2;
+                                        -webkit-text-shadow: var(--xf_text_shadow);
+                                        text-shadow: var(--xf_text_shadow);
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    // 今日运势
+                    .xf_fortune {
+                        position: relative;
+                        padding: 0.0885415rem * 3 0.125rem * 3;
+                        -webkit-box-sizing: border-box;
+                        box-sizing: border-box;
+
+                        h4 {
+                            position: relative;
+                            height: 0.7rem;
+                            margin: 0;
+                            margin-block-start: 0;
+                            margin-block-end: 0;
+                            color: var(--xf_white);
+                            border-bottom: 0.02rem solid var(--xf_white);
+                            -webkit-text-shadow: var(--xf_text_shadow);
+                            text-shadow: var(--xf_text_shadow);
+
+                            font {
+                                font-family: 'jiangnan';
+                                font-size: .5rem;
+                                position: absolute;
+                                top: 50%;
+                                left: 0;
+                                transform: translateY(-50%);
+                            }
+
+                            &::after {
+                                content: '';
+                                width: 0.0781rem * 3;
+                                height: 0.0781rem * 3;
+                                position: absolute;
+                                top: 50%;
+                                right: 0;
+                                border-bottom: 0.0156rem * 3 solid var(--xf_white);
+                                border-right: 0.0156rem * 3 solid var(--xf_white);
+                                -webkit-transform: translateY(-100%) rotateZ(45deg);
+                                transform: translateY(-100%) rotateZ(45deg);
+                            }
+
+                            span {
+                                color: #ffcf00;
+                            }
+                        }
+
+                        .Today_Fortune {
+                            display: -webkit-flex;
+                            display: flex;
+                            -webkit-flex-direction: column;
+                            flex-direction: column;
+                            -webkit-justify-content: center;
+                            justify-content: center;
+                            margin-top: .0833rem * 3;
+                            width: 100%;
+                            height: 4rem;
+                            -webkit-box-sizing: border-box;
+                            box-sizing: border-box;
+
+                            // 进度条
+                            li {
+                                margin: auto .2rem;
+                                height: 1rem;
+                                line-height: 1;
+                                color: var(--xf_white);
+                                text-shadow: var(--xf_text_shadow);
+                                -webkit-box-sizing: border-box;
+                                box-sizing: border-box;
+
+                                // 标题
+                                strong {
+                                    text-align: left;
+                                    display: inline-block;
+                                    font-size: .0833rem * 3.5;
+                                }
+
+                                // 进度条底部颜色
+                                span {
+                                    display: inline-block;
+                                    height: .0521rem * 3;
+                                    width: 87%;
+                                    border-radius: .0521rem * 3;
+                                    -webkit-background-color: var(--xf_glass_color);
+                                    background-color: var(--xf_glass_color);
+                                    -webkit-box-shadow: var(--xf_glass_shadow_solid_bottom);
+                                    box-shadow: var(--xf_glass_shadow_solid_bottom);
+                                    padding: .0156rem * 3;
+
+                                    // 进度条颜色
+                                    em {
+                                        display: table;
+                                        height: .0208rem * 3;
+                                        background-image: -moz-linear-gradient(0deg, #7e00ff 0%, #00fff6 100%);
+                                        background-image: -webkit-linear-gradient(0deg, #7e00ff 0%, #00fff6 100%);
+                                        background-image: -ms-linear-gradient(0deg, #7e00ff 0%, #00fff6 100%);
+                                        background-image: -o-linear-gradient(0deg, #7e00ff 0%, #00fff6 100%);
+                                        border-radius: .026rem * 3;
+                                        -webkit-opacity: 60%;
+                                        opacity: 60%;
+                                        -webkit-animation: xf_schedule 3s linear;
+                                        animation: xf_schedule 3s linear;
+
+                                        @keyframes xf_schedule {
+                                            0% {
+                                                width: 0;
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            // 右侧的盒子
+            .xf_right_box {
+                width: 100%;
+                height: 10.81rem;
+                margin: .2rem auto;
+                padding: 0 .1042rem * 3;
+                -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+                -moz-transition: transform .7s;
+                -webkit-transition: transform .7s;
+                transition: transform .7s;
+                -webkit-transform-style: preserve-3d;
+                transform-style: preserve-3d;
+                // 在做轮播的时候过渡的元素必须要写写初始值，不然第一次不过渡！
+                -webkit-transform: rotateY(0);
+                transform: rotateY(0);
+                overflow: hidden;
+
+                // &:hover {
+                //     -webkit-transform: rotateY(180deg);
+                //     transform: rotateY(180deg);
+                // }
+
+                // 音乐播放器
+                .xf_music_box {
+                    position: relative;
+                    width: 100%;
+                    height: 100%;
+                    padding: .5rem 0;
+                    margin-top: .2rem;
+                    overflow: hidden;
+
+                    // 右箭头
+                    .icon-youjiantou {
+                        position: absolute;
+                        right: .1354rem * 3;
+                        top: .0729rem * 3;
+                        color: var(--xf_white);
+                        font-size: .1875rem * 3;
+                        z-index: 1809185784;
+                    }
+
+                    // 播放器图片
+                    .music_picture {
+                        margin: .1094rem * 3 auto;
+                        border-radius: 50%;
+                        height: 1.1719rem * 4;
+                        width: 1.1719rem * 4;
+                        padding: .0521rem * 3;
+                        overflow: hidden;
+
+                        .music-img {
+                            display: block;
+
+                            img {
+                                width: 100%;
+                                border-radius: 50%;
+                                -webkit-animation: xfmusic 15s linear infinite;
+                                animation: xfmusic 15s linear infinite;
+                            }
+                        }
+
+                        @keyframes xfmusic {
+                            100% {
+                                -webkit-transform: rotate(1turn);
+                                transform: rotate(1turn);
+                            }
+                        }
+                    }
+
+                    .Song_Title {
+                        text-align: center;
+                        color: var(--xf_white);
+
+                        // 歌曲信息
+                        .music-info {
+                            width: 100%;
+
+                            // 歌名
+                            .name {
+                                font-size: .1563rem * 3;
+                                height: .2083rem * 3;
+                                font-weight: bold;
+                                overflow: hidden;
+                                white-space: nowrap;
+                                // 文字超出宽度则显示ellipsis省略号
+                                text-overflow: ellipsis;
+                            }
+
+                            // 作者
+                            .auther {
+                                margin-top: .0938rem * 3;
+                                font-size: .1302rem * 3;
+                                font-weight: normal;
+                                -webkit-white-space: nowrap;
+                                white-space: nowrap;
+                                // 文字超出宽度则显示ellipsis省略号
+                                -webkit-text-overflow: ellipsis;
+                                text-overflow: ellipsis;
+                            }
+                        }
+
+                        // 进度条
+                        .runningbox {
+                            margin: .5rem;
+                            display: flex;
+                            align-items: center;
+                            font-size: .0625rem * 3;
+                            width: 100%;
+
+                            // 播放时长
+                            .start,
+                            .end {
+                                margin: 0 .0625rem * 3;
+                                -webkit-overflow: hidden;
+                                overflow: hidden;
+                                -webkit-white-space: nowrap;
+                                white-space: nowrap;
+                                // 文字超出宽度则显示ellipsis省略号
+                                -webkit-text-overflow: ellipsis;
+                                text-overflow: ellipsis;
+                            }
+
+                            // 进度条
+                            .running {
+                                width: 66%;
+                                height: .0156rem * 3;
+                                border-radius: .0104rem * 3;
+                                -webkit-background-color: var(--xf_glass_color_2);
+                                background-color: var(--xf_glass_color_2);
+
+                                // 时长
+                                .running1 {
+                                    position: relative;
+                                    height: 100%;
+                                    width: 50%;
+                                    border-radius: .0104rem * 3;
+                                    background-color: var(--xf_white);
+
+                                    // 前面的圆
+                                    .circular {
+                                        position: absolute;
+                                        left: 97%;
+                                        top: 50%;
+                                        -webkit-transform: translateY(-50%);
+                                        transform: translateY(-50%);
+                                        display: block;
+                                        height: .0417rem * 3;
+                                        width: .0417rem * 3;
+                                        border-radius: 50%;
+                                        background-color: var(--xf_white);
+                                    }
+                                }
+                            }
+                        }
+
+
+                        // 音乐播放器按钮
+                        .music_but {
+                            display: flex;
+                            justify-content: space-evenly;
+                            width: 100%;
+
+                            li {
+                                color: var(--xf_white);
+                                height: .3021rem * 4;
+                                width: .3021rem * 4;
+                                font-size: .0938rem * 4;
+                                line-height: .3021rem * 4;
+                                border-radius: 50%;
+                                border: 1px solid var(--xf_glass_color_2);
+                                border-style: var(--xf_glass_color_2);
+                                -webkit-background-color: var(--xf_glass_color_4);
+                                background-color: var(--xf_glass_color_4);
+                                -webkit-backdrop-filter: var(--xf_glass_blur);
+                                backdrop-filter: var(--xf_glass_blur);
+                                -webkit-transition: color .5s;
+                                transition: color .5s;
+
+                                &:hover {
+                                    color: #9cdef8;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                // 我的好友
+                .xf_friends {
+                    height: 100%;
+                    width: 100%;
+                    padding: .5rem 0;
+                    -webkit-transform: rotateY(0);
+                    transform: rotateY(0);
+
+                    // 标题
+                    h4 {
+                        display: flex;
+                        position: relative;
+                        height: 0.2344rem * 3;
+                        font-family: 'jiangnan';
+                        font-size: 0.1615rem * 3;
+                        color: var(--xf_white);
+                        border-bottom: 0.0104165rem * 3 solid var(--xf_white);
+                        -webkit-text-shadow: var(--xf_text_shadow);
+                        text-shadow: var(--xf_text_shadow);
+
+                        // 箭头
+                        &::after {
+                            content: '';
+                            width: 0.0781rem * 3;
+                            height: 0.0781rem * 3;
+                            position: absolute;
+                            right: 0;
+                            top: .0365rem * 3;
+                            border-bottom: 0.0156rem * 3 solid var(--xf_white);
+                            border-right: 0.0156rem * 3 solid var(--xf_white);
+                            -moz-transform: rotateZ(-45deg);
+                            -webkit-transform: rotateZ(-45deg);
+                            transform: rotateZ(-45deg);
+                        }
+
+                        // 图标
+                        img {
+                            width: .1771rem * 3;
+                            height: .1771rem * 3;
+                            margin-right: .026rem * 3;
+                        }
+                    }
+
+                    // 好友
+                    .xf_friend_YYDS {
+                        height: 8.5rem;
+                        display: flex;
+                        flex-direction: column;
+                        align-items: center;
+                        padding: .026rem * 3 0;
+                        -webkit-overflow-y: auto;
+                        overflow-y: auto;
+
+                        li {
+                            display: flex;
+                            flex-direction: column;
+                            flex-wrap: wrap;
+                            justify-content: center;
+                            align-content: flex-start;
+                            margin-top: .0885415rem * 3;
+                            width: 95%;
+                            height: 1.75rem;
+                            background-color: var(--xf_glass_color);
+                            border-radius: .0521rem * 3;
+                            color: var(--xf_white);
+                            text-shadow: var(--xf_text_shadow);
+                            -ms-transition: box-shadow .3s;
+                            -webkit-transition: box-shadow .3s;
+                            transition: box-shadow .3s;
+
+                            &:hover {
+                                -webkit-box-shadow: var(--xf_shadow_friend);
+                                box-shadow: var(--xf_shadow_friend);
+                            }
+
+                            a {
+                                display: flex;
+                                flex-direction: column;
+                                flex-wrap: wrap;
+                                justify-content: center;
+                                align-content: flex-start;
+                                width: 100%;
+                                height: 100%;
+
+                                // 去除鼠标经过颜色
+                                &:hover {
+                                    color: var(--xf_white);
+                                }
+
+                                // 组合样式
+                                img,
+                                h5,
+                                p {
+                                    margin-left: .2rem;
+                                }
+
+                                h5,
+                                p {
+                                    width: 75%;
+                                    -webkit-overflow: hidden;
+                                    overflow: hidden;
+                                    -webkit-white-space: nowrap;
+                                    white-space: nowrap;
+                                    // 文字超出宽度则显示ellipsis省略号
+                                    -webkit-text-overflow: ellipsis;
+                                    text-overflow: ellipsis;
+                                }
+
+                                // 头像
+                                img {
+                                    height: .3021rem * 5;
+                                    width: .3021rem * 5;
+                                    border-radius: 50%;
+                                    border: .0052rem * 5 solid var(--xf_glass_color_2);
+                                }
+
+                                // 名字
+                                h5 {
+                                    font-size: .0951rem * 5;
+                                }
+
+                                // 介绍
+                                p {
+                                    margin-top: .026rem * 5;
+                                    font-size: .0684373rem * 5;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    // 底部盒子
+    .xf_footer {
+        z-index: 9;
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+        border-radius: 0;
+        font-size: .2rem;
+        padding-bottom: .15rem;
+
+        p {
+            font-size: .32rem;
+            color: var(--xf_white);
+            line-height: 1.8;
+            -webkit-text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, .2);
+
+            a {
+                &:nth-child(1) {
+                    font-weight: 600;
+                    color: var(--xf_white);
+                    background: -ms-linear-gradient(45deg, var(--xf_gradient_5));
+                    background: -webkit-linear-gradient(45deg, var(--xf_gradient_5));
+                    background: -moz-linear-gradient(45deg, var(--xf_gradient_5));
+                    background: linear-gradient(45deg, var(--xf_gradient_5));
+                    color: transparent;
+                    -webkit-background-clip: text;
+                    background-clip: text;
+                    -moz-animation: xf-copy 20s linear infinite;
+                    -webkit-animation: xf-copy 20s linear infinite;
+                    animation: xf-copy 20s linear infinite;
+                    -webkit-text-shadow: 1px 1px 1px rgba(255, 255, 255, .1);
+                    text-shadow: 1px 1px 1px rgba(255, 255, 255, .1);
+                }
+
+                &:nth-child(2):hover {
+                    color: var(--xf_white);
+                }
+            }
+
+            &:nth-child(2) {
+                font-size: .25rem;
+
+                a {
+                    color: var(--xf_grey);
+                }
+            }
+
+            &:nth-child(3) {
+                font-size: .25rem;
+
+                a {
+                    color: var(--xf_grey);
+                }
+            }
+
+            @keyframes xf-copy {
+                100% {
+                    background-position: 104.1667vw 0;
+                }
+            }
+
+            img {
+                transform: translateY(.05rem);
+                width: .3rem;
+                margin-right: .1rem;
+            }
+        }
+    }
+
+    // sweetalert弹窗
+    .swal-overlay {
+        top: -18%;
+
+        // 弹窗样式
+        .swal-modal {
+            width: 2.4896rem * 3;
+            margin: .1042rem * 3 auto;
+            // 模糊效果
+            -webkit-backdrop-filter: var(--xf_glass_blur);
+            backdrop-filter: var(--xf_glass_blur);
+            // 背景颜色
+            -webkit-background-color: rgba(255, 255, 255, .4);
+            background-color: rgba(255, 255, 255, .4);
+            -webkit-box-shadow: 0 0 .0313rem * 3 .0052rem * 3 var(--xf_glass_color_3);
+            box-shadow: 0 0 .0313rem * 3 .0052rem * 3 var(--xf_glass_color_3);
+
+            // 文字
+            .swal-text {
+                color: var(--xf_white);
+                font-size: .1042rem * 4;
+            }
+
+            .swal-text:first-child {
+                margin-top: .2344rem * 3;
+            }
+
+            .swal-footer {
+                margin-top: .0677rem * 3;
+                padding: .0677rem * 4 .0833rem * 4;
+            }
+
+            // 弹窗颜色按钮
+            .swal-button {
+                font-size: .0833rem * 4;
+                padding: .0521rem * 3 .125rem * 3;
+                background: -o-linear-gradient(bottom, #8ca0d4, #a6e6ff);
+                background: -ms-linear-gradient(bottom, #8ca0d4, #a6e6ff);
+                background: -moz-linear-gradient(bottom, #8ca0d4, #a6e6ff);
+                background: -webkit-linear-gradient(bottom, #8ca0d4, #a6e6ff);
+                background: linear-gradient(bottom, #8ca0d4, #a6e6ff);
+            }
+        }
+    }
+
+    // jquery弹窗
+    .jconfirm .jconfirm-box {
+        margin-left: 8%;
+        margin-right: 8%;
+    }
+
+    .jconfirm.jconfirm-white .jconfirm-bg,
+    .jconfirm.jconfirm-light .jconfirm-bg {
+        background-color: var(--xf-black);
+    }
+
+    .jconfirm .jconfirm-box div.jconfirm-content-pane .jconfirm-content {
+        overflow: hidden;
+        text-align: center;
+    }
+
+    .jconfirm-box {
+        -webkit-backdrop-filter: var(--xf_glass_blur) !important;
+        backdrop-filter: var(--xf_glass_blur) !important;
+        -webkit-background-color: var(--xf_glass_color) !important;
+        background-color: var(--xf_glass_color) !important;
+        box-shadow: 0 0 5px 1px var(--xf_glass_color_3) !important;
+        padding: .18rem * 3 .12rem * 3 0 !important;
+        border-radius: .0521rem * 3 !important;
+
+        .form-group {
+            margin-top: .1rem * 3;
+        }
+
+        .jconfirm-title-c .jconfirm-title,
+        .jconfirm-content div {
+            font-family: 'jianyuanti' !important;
+            font-size: .45rem !important;
+        }
+
+        .jconfirm-title-c .jconfirm-title {
+            position: relative;
+            font-size: .8rem !important;
+
+            &::before,
+            &::after {
+                content: '';
+                position: absolute;
+                bottom: -0.4rem;
+                left: 0;
+                width: 20%;
+                height: .026rem * 3;
+                border-radius: .026rem * 3;
+                background-color: #8ca0d4;
+            }
+
+            &::after {
+                left: 15%;
+                z-index: -1;
+                background-color: #a6e6ff;
+            }
+        }
+    }
+
+
+    .jconfirm.jconfirm-light .jconfirm-box .jconfirm-buttons button.btn-default:hover {
+        background: #a6e6ff;
+    }
+
+    // 弹窗样式
+    .form-control {
+        display: block;
+        width: 100%;
+        padding: .0469rem * 3 .0833rem * 3;
+        font-size: .4rem !important;
+        color: var(--xf_white);
+        line-height: 1.5;
+        -webkit-background-color: var(--xf_glass_color);
+        background-image: none;
+        background-color: var(--xf_glass_color);
+        background-image: none;
+        border: 1px solid var(--xf_grey);
+        border-radius: 8px;
+        -webkit-transition: border-color ease-in-out .2s, -webkit-box-shadow ease-in-out .15s;
+        -o-transition: border-color ease-in-out .2s, box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .2s, box-shadow ease-in-out .15s;
+
+        &:focus {
+            border-color: var(--xf_white);
+            outline: 0;
+        }
+    }
+
+    // 弹窗按钮
+    .jconfirm .jconfirm-box .jconfirm-buttons button.btn-blue {
+        font-size: .4rem !important;
+        padding: .2rem .3rem !important;
+        background-color: #e78e9c;
+        background: -o-linear-gradient(bottom, #e78e9c, #e7b573);
+        background: -ms-linear-gradient(bottom, #e78e9c, #e7b573);
+        background: -moz-linear-gradient(bottom, #e78e9c, #e7b573);
+        background: -webkit-linear-gradient(bottom, #e78e9c, #e7b573);
+        background: linear-gradient(bottom, #e78e9c, #e7b573);
+        color: var(--xf_white);
+        border-radius: .0313rem * 3 !important;
+
+        &:hover {
+            -webkit-animation: xf-btn-color-blue forwards .5s;
+            animation: xf-btn-color-blue forwards .5s;
+
+            @keyframes xf-btn-color-blue {
+                100% {
+                    background: -o-linear-gradient(top, #e78e9c, );
+                    background: -ms-linear-gradient(top, #e78e9c, #e7b573);
+                    background: -moz-linear-gradient(top, #e78e9c, #e7b573);
+                    background: -webkit-linear-gradient(top, #e78e9c, #e7b573);
+                    background: linear-gradient(top, #e78e9c, #e7b573);
+                }
+            }
+        }
+    }
+
+    .jconfirm.jconfirm-light .jconfirm-box .jconfirm-buttons button.btn-default {
+        font-size: .4rem !important;
+        padding: .2rem .3rem !important;
+        background-color: #8ca0d4;
+        background: -o-linear-gradient(bottom, #8ca0d4, #a6e6ff);
+        background: -ms-linear-gradient(bottom, #8ca0d4, #a6e6ff);
+        background: -moz-linear-gradient(bottom, #8ca0d4, #a6e6ff);
+        background: -webkit-linear-gradient(bottom, #8ca0d4, #a6e6ff);
+        background: linear-gradient(bottom, #8ca0d4, #a6e6ff);
+        color: var(--xf_white);
+        border-radius: .0313rem * 3 !important;
+
+        &:hover {
+            -webkit-animation: xf-btn-color forwards .5s;
+            animation: xf-btn-color forwards .5s;
+
+            @keyframes xf-btn-color {
+                100% {
+                    background: -o-linear-gradient(top, #8ca0d4, );
+                    background: -ms-linear-gradient(top, #8ca0d4, #a6e6ff);
+                    background: -moz-linear-gradient(top, #8ca0d4, #a6e6ff);
+                    background: -webkit-linear-gradient(top, #8ca0d4, #a6e6ff);
+                    background: linear-gradient(top, #8ca0d4, #a6e6ff);
+                }
+            }
+        }
+    }
+
+    // 标页码
+    .xf-swiper-pagination {
+        margin-top: .5rem;
+        display: -webkit-flex;
+        display: flex;
+        justify-content: center;
+
+        // 小圆点
+        .swiper-pagination-bullet {
+            -webkit-backdrop-filter: var(--xf_glass_blur);
+            backdrop-filter: var(--xf_glass_blur);
+            background-color: var(--xf_white);
+            box-shadow: var(--xf_glass_shadow);
+            margin: 0 .2rem !important;
+        }
+
+        .swiper-pagination-bullet-active {
+            background-color: var(--xf_white);
+            box-shadow: var(--xf_glass_shadow);
+        }
+    }
+
+    // 音乐播放器设置
+    #xplayer {
+        bottom: 0;
+
+        // 图片大小
+        .player .cover {
+            width: 4.5rem;
+            height: 4.5rem;
+            margin: .7rem auto;
+            padding: .15rem;
+        }
+
+        // 歌名，作者
+        .player .info {
+            height: .8rem;
+            top: 5rem;
+
+            .songstyle {
+                font-size: .6rem;
+            }
+
+            .artiststyle {
+                top: 83%;
+                right: .2rem;
+                width: 1.6rem;
+            }
+        }
+
+        // 歌词
+        #Ksc {
+            pointer-events: none;
+            -webkit-transition: .5s;
+            -moz-transition: .5s;
+            -ms-transition: .5s;
+            transition: .5s;
+            position: fixed;
+            // 固定歌词
+            -webkit-transform: translate3d(0, 0, 0);
+            -moz-transform: translate3d(0, 0, 0);
+            -ms-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+            z-index: 999;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: .55rem;
+        }
+
+        #Lrc {
+            position: fixed;
+            z-index: 999;
+            top: 65%;
+            left: 0;
+            font-size: .46rem;
+            width: 100%;
+            height: .55rem;
+            font-weight: normal !important;
+            overflow: hidden;
+            -webkit-transform: translate3d(0, 0, 0);
+            -moz-transform: translate3d(0, 0, 0);
+            -ms-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+
+            &:hover ul {
+                margin: 0;
+
+                li {
+                    height: .55rem;
+                    line-height: .55rem;
+                }
+            }
+        }
+
+        // 进度条
+        .player .foot {
+            bottom: 1.8rem;
+            height: 0.5rem;
+
+            .playprogress .progressbg {
+                height: 0.05rem;
+                border-radius: 3px;
+                margin-top: .15rem;
+
+                .progressbg1,
+                .progressbg2 {
+                    height: 100%;
+                }
+
+                .ts {
+                    width: .25rem;
+                    height: .25rem;
+                    top: -0.1rem;
+                }
+            }
+
+            .time {
+                left: .25rem;
+            }
+
+            .switch-playlist {
+                right: .25rem;
+            }
+        }
+
+        // 按钮
+        .player .control {
+            bottom: .2rem;
+
+            .prev,
+            .status,
+            .next {
+                width: 1rem;
+                height: 1rem;
+                line-height: 1rem;
+                font-size: .15rem;
+            }
+
+            .status {
+
+                .play,
+                .pause {
+                    line-height: 1rem;
+                }
+            }
+        }
+        .playlist .list li {
+            height: 40px !important;
+            line-height: 40px !important;
+        }
+    }
+
+    // 歌单
+    #xplayer.showAlbumList .playlist {
+        height: 6rem !important;
+        -webkit-transform: translateY(-173%);
+        transform: translateY(-173%);
+
+         .musicheader {
+            padding: .13rem 0 .13rem .13rem;
+            font-size: .4rem;
+            line-height: .7rem;
+        }
+    }
+}

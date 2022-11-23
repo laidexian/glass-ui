@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>添加好友 - 毛玻璃拟态UI后台管理系统</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/materialdesignicons.min.css">
+    <!--对话框-->
+    <link rel="stylesheet" href="js/jconfirm/jquery-confirm.min.css">
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="icon/iconfont.css">
+    <link rel="stylesheet" href="css/site.css">
+    <style>
+        #siteTable tr td img {
+            -webkit-border-radius: 50%;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="lyear-layout-web">
+        <div class="lyear-layout-container">
+            <!--左侧导航-->
+            <aside class="lyear-layout-sidebar xf_glass">
+
+                <!-- logo -->
+                <div id="logo" class="sidebar-header">
+                    <a href="index.html"><img src="images/admin-logo.png" alt="LOGO" /></a>
+                </div>
+                <div class="lyear-layout-sidebar-scroll">
+
+                    <nav class="sidebar-main">
+                        <ul class="nav nav-drawer">
+                            <li class="nav-item"><a href="index.html"><i class="iconfont icon-shouyefill"></i> 后台首页</a>
+                            </li>
+                            <li class="nav-item"><a href="set.html"><i class="iconfont icon-huaban34"></i> 基础设置</a></li>
+                            <li class="nav-item"><a href="inf.html"><i class="iconfont icon-wodexinxi_jibenxinxi"></i>
+                                    我的信息</a></li>
+                            <li class="nav-item"><a href="site.html"><i class="iconfont icon-wangzhangaofang"></i>
+                                    旗下站点</a></li>
+                            <li class="nav-item"><a href="msg.html"><i class="iconfont icon-liuyan"></i> 留言列表</a></li>
+                            <li class="nav-item xf-active"><a href="friend.html"><i
+                                        class="iconfont icon-tianjiahaoyou-"></i> 添加好友</a></li>
+                            <li class="nav-item"><a href="update.html"><i class="iconfont icon-banbengengxin"></i>
+                                    更新日志</a></li>
+                        </ul>
+                    </nav>
+
+            </aside>
+            <!--End 左侧导航-->
+
+            <!--头部信息-->
+            <header class="lyear-layout-header xf_glass">
+
+                <nav class="navbar navbar-default">
+                    <div class="topbar">
+
+                        <div class="topbar-left">
+                            <div class="lyear-aside-toggler">
+                                <span class="lyear-toggler-bar"></span>
+                                <span class="lyear-toggler-bar"></span>
+                                <span class="lyear-toggler-bar"></span>
+                            </div>
+                            <div class="xf_search">
+                                <form action="https://www.baidu.com/baidu" target="_blank">
+                                    <input type="submit" value=""><i class="iconfont icon-sousuo"></i>
+                                    <input type="text" name="word" size="30" autocomplete="off" placeholder="百度一下">
+                                </form>
+                            </div>
+                        </div>
+
+                        <ul class="topbar-right">
+                            <li class="dropdown dropdown-profile">
+                                <a href="javascript:void(0)" data-toggle="dropdown" aria-expanded="false">
+                                    <img class="img-avatar img-avatar-48 m-r-10" th:src="${'https://q2.qlogo.cn/headimg_dl?dst_uin='+session.qq+'&spec=100'}" alt="admin" />
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li> <a href="pwd.html"><i class="mdi mdi-lock-outline"></i> 修改密码</a> </li>
+                                    <li> <a href="/logout"><i class="mdi mdi-logout-variant"></i> 退出登录</a> </li>
+                                </ul>
+                            </li>
+                            <li class="xf-author"><a href="tencent://message/?uin=1809185784&Site=AicTeam&Menu=yes"
+                                                     target="_blank" rel="noopener noreferrer"
+                                                     class="tooltips iconfont icon-xiaoxi"><span>联系作者</span></a></li>
+                        </ul>
+
+                    </div>
+                </nav>
+
+            </header>
+            <!--End 头部信息-->
+
+            <!--页面主要内容-->
+            <main class="lyear-layout-content">
+
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>添加好友</h4>
+                                </div>
+                                <div class="card-toolbar clearfix">
+                                    <div class="toolbar-btn-action">
+                                        <a class="btn btn-purple m-r-5 friend_add" href="#!"><i class="mdi mdi-plus"></i>
+                                            新增</a>
+                                        <a class="btn btn-warning m-r-5 friend_pres" href="#!"><i class="mdi mdi-check"></i>
+                                            保存</a>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>编号</th>
+                                                    <th>头像</th>
+                                                    <th>名称</th>
+                                                    <th>介绍</th>
+                                                    <th>跳转链接</th>
+                                                    <th>操作</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="siteTable">
+                                                <tr th:each="friend :${friendList}">
+                                                    <td th:text="${friend.id}">1</td>
+                                                    <td><img th:src="${friend.avatar}" alt="ico" width="20rem"></td>
+                                                    <td th:text="${friend.name}">小枫</td>
+                                                    <td th:text="${friend.introduce}">欢迎使用小枫毛玻璃UI</td>
+                                                    <td><a th:text="${friend.url}" th:href="friend.url" target="_blank" rel="noopener noreferrer">https://www.xfabe.com</a></td>
+                                                    <td>
+                                                        <div class="btn-group">
+                                                            <a class="btn btn-xs btn-default friend_edit" href="#!" title=""
+                                                                data-toggle="tooltip"><i class="mdi mdi-pencil"></i></a>
+                                                            <a class="btn btn-xs btn-default" href="#!"
+                                                                data-toggle="tooltip"
+                                                                onclick='{if(confirm("确定要删除吗?")) {deleteTr(this); }else {}}'><i
+                                                                    class="mdi mdi-window-close"></i></a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <footer class="col-md-12">
+                        <p>Copyright &copy; 2022 <a href="https://www.xfabe.com" target="_blank"
+                                rel="noopener noreferrer">小枫网络</a> | by：<a
+                                href="tencent://message/?uin=1809185784&Site=AicTeam&Menu=yes" target="_blank"
+                                rel="noopener noreferrer">小枫</a></p>
+                    </footer>
+                </div>
+
+            </main>
+            <!--End 页面主要内容-->
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/perfect-scrollbar.min.js"></script>
+    <script type="text/javascript" src="js/main.min.js"></script>
+    <script type="text/javascript" src="js/fireworks.js"></script>
+
+    <!-- 对话框 -->
+    <script src="js/jconfirm/jquery-confirm.min.js"></script>
+    <script>
+        // 添加站点
+        $('.friend_add').on('click', function () {
+            $.confirm({
+                title: '添加好友',
+                content: '' +
+                    '<form action="" class="add_friend">' +
+                    '<div class="form-group">' +
+                    '<label>请输入好友头像</label>' +
+                    '<input type="text" placeholder="请输入头像外链" value="" class="friendTx form-control" required />' +
+                    '</div>' +
+                    '<div class="form-group">' +
+                    '<label>请输入好友名称</label>' +
+                    '<input type="text" placeholder="请输入好友名称" value="" class="friendName form-control" required />' +
+                    '</div>' +
+                    '<div class="form-group">' +
+                    '<label>请输入好友介绍</label>' +
+                    '<input type="text" placeholder="请输入好友介绍" value="" class="friendInt form-control" required />' +
+                    '</div>' +
+                    '<div class="form-group">' +
+                    '<label>请输入好友友链</label>' +
+                    '<input type="text" placeholder="请输入好友友链" value="" class="friendLink form-control" required />' +
+                    '</div>' +
+                    '</form>',
+                buttons: {
+                    formSubmit: {
+                        text: '提交',
+                        btnClass: 'btn-blue',
+                        action: function () {
+                            var friendTx = this.$content.find('.friendTx').val();
+                            var friendName = this.$content.find('.friendName').val();
+                            var friendInt = this.$content.find('.friendInt').val();
+                            var friendLink = this.$content.find('.friendLink').val();
+                            if (!friendTx) {
+                                $.alert('请输入您要添加的头像外链');
+                                return false;
+                            }
+                            if (!friendName) {
+                                $.alert('请输入您要添加的好友名称');
+                                return false;
+                            }
+                            if (!friendInt) {
+                                $.alert('请输入您要添加的好友介绍');
+                                return false;
+                            }
+                            if (!friendLink) {
+                                $.alert('请输入您要添加的好友友链');
+                                return false;
+                            }
+                            let params={avatar:friendTx,name:friendName,introduce:friendInt,url:friendLink}
+                            $.ajax({url:`/admin/friend/add`,method:'post',data:params,success:()=>{
+                                    location.reload()
+                                }})
+                        }
+                    },
+                    cancel: {
+                        text: '取消'
+                    },
+                },
+                onContentReady: function () {
+                    var jc = this;
+                    this.$content.find('form').on('submit', function (e) {
+                        e.preventDefault();
+                        jc.$$formSubmit.trigger('click');
+                    });
+                }
+            });
+        });
+
+        // 修改站点
+        $('.friend_edit').on('click', function () {
+            let currentItemID=this.parentNode.parentNode.parentElement.children[0].innerText
+            $.confirm({
+                title: '修改好友信息',
+                content: '' +
+                    '<form action="" class="add_friend">' +
+                    '<div class="form-group">' +
+                    '<label>请输入好友头像</label>' +
+                    '<input type="text" placeholder="请输入头像外链" value="https://q2.qlogo.cn/headimg_dl?dst_uin=1809185784&spec=100" class="friendTx form-control" required />' +
+                    '</div>' +
+                    '<div class="form-group">' +
+                    '<label>请输入好友名称</label>' +
+                    '<input type="text" placeholder="请输入好友名称" value="小枫" class="friendName form-control" required />' +
+                    '</div>' +
+                    '<div class="form-group">' +
+                    '<label>请输入好友介绍</label>' +
+                    '<input type="text" placeholder="请输入好友介绍" value="欢迎使用小枫毛玻璃UI" class="friendInt form-control" required />' +
+                    '</div>' +
+                    '<div class="form-group">' +
+                    '<label>请输入好友友链</label>' +
+                    '<input type="text" placeholder="请输入好友友链" value="https://www.xfabe.com" class="friendLink form-control" required />' +
+                    '</div>' +
+                    '</form>',
+                buttons: {
+                    formSubmit: {
+                        text: '提交',
+                        btnClass: 'btn-blue',
+                        action: function () {
+                            var friendTx = this.$content.find('.friendTx').val();
+                            var friendName = this.$content.find('.friendName').val();
+                            var friendInt = this.$content.find('.friendInt').val();
+                            var friendLink = this.$content.find('.friendLink').val();
+                            if (!friendTx) {
+                                $.alert('请输入您要添加的头像外链');
+                                return false;
+                            }
+                            if (!friendName) {
+                                $.alert('请输入您要添加的好友名称');
+                                return false;
+                            }
+                            if (!friendInt) {
+                                $.alert('请输入您要添加的好友介绍');
+                                return false;
+                            }
+                            if (!friendLink) {
+                                $.alert('请输入您要添加的好友友链');
+                                return false;
+                            }
+
+                            let params={id:currentItemID,avatar:friendTx,name:friendName,introduce:friendInt,url:friendLink}
+                            $.ajax({url:`/admin/friend/update`,method:'post',data:params,success:()=>{
+                                    location.reload()
+                                }})
+                        }
+                    },
+                    cancel: {
+                        text: '取消'
+                    },
+                },
+                onContentReady: function () {
+                    var jc = this;
+                    this.$content.find('form').on('submit', function (e) {
+                        e.preventDefault();
+                        jc.$$formSubmit.trigger('click');
+                    });
+                }
+            });
+        });
+
+        // 删除表格
+        function deleteTr(obj) {
+            //通过this找到父级元素节点
+            var tr = obj.parentNode.parentNode.parentNode
+            //找到表格
+            var tbody = tr.parentNode
+            //删除行
+            tbody.removeChild(tr)
+            //只剩行首时删除表格
+            // if (tbody.rows.length == 1) {
+            tbody.parentNode.removeChild(tbody)
+            // }
+            $.ajax({url:`/admin/friend/del?id=${tr.children[0].innerText}`,success:()=>{
+                    location.reload()
+                }})
+        }
+
+        // 保存
+        $('.friend_pres').on('click', function () {
+            $.confirm({
+                title: '保存成功',
+                content: '',
+                type: 'orange',
+                typeAnimated: false,
+                buttons: {
+                    omg: {
+                        text: '知道了',
+                        btnClass: 'btn-orange',
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

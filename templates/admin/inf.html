@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>我的信息 - 毛玻璃拟态UI后台管理系统</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/materialdesignicons.min.css">
+    <!--对话框-->
+    <link rel="stylesheet" href="js/jconfirm/jquery-confirm.min.css">
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="icon/iconfont.css">
+    <link rel="stylesheet" href="css/site.css">
+    <style>
+        .form-control:focus {
+            border-color: var(--text-color-2);
+            outline: 0;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+        }
+
+        .card {
+            border-radius: 10px;
+        }
+
+        .card-header h4 {
+            color: var(--text-color-1);
+            font-weight: bold;
+            font-size: 2rem;
+        }
+
+        label {
+            color: var(--text-color-1);
+        }
+
+        .help-block {
+            color: var(--text-color-5);
+        }
+
+        .dropdown-menu {
+            color: var(--text-white);
+            background-image: -moz-linear-gradient(var(--xf-Gradient-background-2));
+            background-image: -o-linear-gradient(var(--xf-Gradient-background-2));
+            background-image: -webkit-linear-gradient(var(--xf-Gradient-background-2));
+            background-image: linear-gradient(var(--xf-Gradient-background-2));
+        }
+
+        .upload-box {
+            overflow: hidden;
+        }
+
+        .upload-box .xf_upload {
+            position: absolute;
+            font-size: 2.4rem;
+            z-index: 3;
+            -webkit-opacity: 0;
+            opacity: 0;
+        }
+
+        .lyear-switch span {
+            background-color: var(--text-color-5);
+        }
+
+        /* 运势 */
+        .input-group-addon {
+            border-color: var(--text-color-5);
+            background-color: var(--text-color-2);
+            color: var(--text-white);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="lyear-layout-web">
+        <div class="lyear-layout-container">
+            <!--左侧导航-->
+            <aside class="lyear-layout-sidebar xf_glass">
+
+                <!-- logo -->
+                <div id="logo" class="sidebar-header">
+                    <a href="index.html"><img src="images/admin-logo.png" alt="LOGO" /></a>
+                </div>
+                <div class="lyear-layout-sidebar-scroll">
+
+                    <nav class="sidebar-main">
+                        <ul class="nav nav-drawer">
+                            <li class="nav-item"><a href="index.html"><i class="iconfont icon-shouyefill"></i> 后台首页</a>
+                            </li>
+                            <li class="nav-item"><a href="set.html"><i class="iconfont icon-huaban34"></i> 基础设置</a></li>
+                            <li class="nav-item xf-active"><a href="inf.html"><i
+                                        class="iconfont icon-wodexinxi_jibenxinxi"></i> 我的信息</a></li>
+                            <li class="nav-item"><a href="site.html"><i class="iconfont icon-wangzhangaofang"></i>
+                                    旗下站点</a></li>
+                            <li class="nav-item"><a href="msg.html"><i class="iconfont icon-liuyan"></i> 留言列表</a></li>
+                            <li class="nav-item"><a href="friend.html"><i class="iconfont icon-tianjiahaoyou-"></i>
+                                    添加好友</a></li>
+                            <li class="nav-item"><a href="update.html"><i class="iconfont icon-banbengengxin"></i>
+                                    更新日志</a></li>
+                        </ul>
+                    </nav>
+
+            </aside>
+            <!--End 左侧导航-->
+
+            <!--头部信息-->
+            <header class="lyear-layout-header xf_glass">
+
+                <nav class="navbar navbar-default">
+                    <div class="topbar">
+
+                        <div class="topbar-left">
+                            <div class="lyear-aside-toggler">
+                                <span class="lyear-toggler-bar"></span>
+                                <span class="lyear-toggler-bar"></span>
+                                <span class="lyear-toggler-bar"></span>
+                            </div>
+                            <div class="xf_search">
+                                <form action="https://www.baidu.com/baidu" target="_blank">
+                                    <input type="submit" value=""><i class="iconfont icon-sousuo"></i>
+                                    <input type="text" name="word" size="30" autocomplete="off" placeholder="百度一下">
+                                </form>
+                            </div>
+                        </div>
+
+                        <ul class="topbar-right">
+                            <li class="dropdown dropdown-profile">
+                                <a href="javascript:void(0)" data-toggle="dropdown" aria-expanded="false">
+                                    <img class="img-avatar img-avatar-48 m-r-10" th:src="${'https://q2.qlogo.cn/headimg_dl?dst_uin='+session.qq+'&spec=100'}" alt="admin" />
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li> <a href="pwd.html"><i class="mdi mdi-lock-outline"></i> 修改密码</a> </li>
+                                    <li> <a href="/logout"><i class="mdi mdi-logout-variant"></i> 退出登录</a> </li>
+                                </ul>
+                            </li>
+                            <li class="xf-author"><a href="tencent://message/?uin=1809185784&Site=AicTeam&Menu=yes"
+                                                     target="_blank" rel="noopener noreferrer"
+                                                     class="tooltips iconfont icon-xiaoxi"><span>联系作者</span></a></li>
+                        </ul>
+
+                    </div>
+                </nav>
+
+            </header>
+            <!--End 头部信息-->
+
+            <!--页面主要内容-->
+            <main class="lyear-layout-content">
+
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="card xf_glass">
+                                <div class="card-header">
+                                    <h4>个人信息</h4>
+                                </div>
+                                <div class="tab-content">
+                                    <div class="tab-pane active">
+
+                                        <form action="" method="post" name="edit-form" class="edit-form">
+                                            <div class="form-group">
+                                                <label for="web_name_pinyin">名称拼音</label>
+                                                <input class="form-control" type="text" id="web_name_pinyin"
+                                                    name="pinyin" th:value="${baseinfo.pinyin}" placeholder="请输入你的名称拼音">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="web_name_xf">首页名称</label>
+                                                <input type="text" class="form-control" name="name"
+                                                    id="name" th:value="${baseinfo.name}" placeholder="请输入你的名称">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="web_name_auto">首页个签</label>
+                                                <input class="form-control" type="text" id="web_name_auto"
+                                                    name="saying" th:value="${baseinfo.saying}" placeholder="请输入你的个性签名">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="web_name_tx">首页头像</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" name="avatar" th:value="${baseinfo.avatar}">
+                                                    <div class="input-group-btn upload-box">
+                                                        <input id="avatar" type="file" value="上传图片" class="xf_upload" title="上传头像" onchange="uploadFile(this,'/admin/upload/avatar')">
+                                                        <button class="btn btn-purple" type="button">上传头像</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" style="text-align: center; margin: 0 auto;">
+                                                <h4
+                                                    style="width: 50%; margin: 0 auto; color: var(--text-color-0); font-size: 1.8rem;">
+                                                    ˇ&nbsp;今日运势配置&nbsp;ˇ</h4>
+                                            </div>
+                                            <label for="web_banner_qq" style="color: red;">限制输入100以内数字</label>
+                                            <div class="form-group col-md-12" style="padding: 0;">
+                                                <div class="col-xs-6" style="padding: 0;">
+                                                    <div class="input-group col-xs-12">
+                                                        <span class="input-group-addon" id="yunshi">运势：</span>
+                                                        <input type="number" min='0' max='100' v-model='testNum'
+                                                            class="form-control" id="basic-url" name="ys"
+                                                            aria-describedby="yunshij" th:value="${baseinfo.ys}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6" style="padding: 0;">
+                                                    <div class="input-group col-xs-12">
+                                                        <span class="input-group-addon" id="aiqing">爱情：</span>
+                                                        <input type="number" min='0' max='100' v-model='testNum'
+                                                            class="form-control" id="basic-url" name="aq"
+                                                            aria-describedby="aiqing" th:value="${baseinfo.aq}" >
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group col-md-12" style="padding: 0;">
+                                                <div class="col-xs-6" style="padding: 0;">
+                                                    <div class="input-group col-xs-12">
+                                                        <span class="input-group-addon" id="jiankang">健康：</span>
+                                                        <input type="number" min='0' max='100' v-model='testNum'
+                                                            class="form-control" id="basic-url" name="jk"
+                                                            aria-describedby="jiankang" th:value="${baseinfo.jk}">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-6" style="padding: 0;">
+                                                    <div class="input-group col-xs-12">
+                                                        <span class="input-group-addon" id="caifu">财富：</span>
+                                                        <input type="number" min='0' max='100' v-model='testNum'
+                                                            class="form-control" id="basic-url" aria-describedby="caifu"
+                                                             name="cf"  th:value="${baseinfo.cf}">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group" style="text-align: center; margin: 0 auto;">
+                                                <h4
+                                                    style="width: 50%; margin: 0 auto; color: var(--text-color-0); font-size: 1.8rem;">
+                                                    ˇ&nbsp;固定轮播配置&nbsp;ˇ</h4>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="web_banner_qq">QQ号</label>
+                                                <input class="form-control" type="text" id="web_banner_qq"
+                                                    name="qq" th:value="${baseinfo.qq}" placeholder="请输入你的QQ号">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="web_banner_wx">微信图片</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" name="wechatImg"
+                                                        id="web_banner_wx" th:value="${baseinfo.wechatImg}">
+                                                    <div class="input-group-btn upload-box">
+                                                        <input id="wechatImg" type="file" value="" class="xf_upload" onchange="uploadFile(this)" title="上传图片">
+                                                        <button class="btn btn-purple" type="button"
+                                                        >上传图片</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="web_banner_bilibili">bilibili主页</label>
+                                                <input class="form-control" type="text" id="web_banner_bilibili"
+                                                    name="bilibiliUrl"
+                                                       th:value="${baseinfo.bilibiliUrl}"
+                                                    placeholder="请输入你的bilibili主页链接">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="web_banner_mail">首页邮箱</label>
+                                                <input class="form-control" type="text" id="web_banner_mail"
+                                                    name="mail" th:value="${baseinfo.mail}"
+                                                    placeholder="请输入你的邮箱链接">
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-info m-r-5" id="xf_preservation">保
+                                                    存</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>添加轮播</h4>
+                                </div>
+                                <div class="card-toolbar clearfix">
+                                    <div class="toolbar-btn-action">
+                                        <a class="btn btn-purple m-r-5 banner_add" href="#!"><i
+                                                class="mdi mdi-plus"></i>
+                                            新增</a>
+                                        <a class="btn btn-warning m-r-5 banner_pres" href="#!"><i
+                                                class="mdi mdi-check"></i>
+                                            保存</a>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>编号</th>
+                                                    <th>轮播图标</th>
+                                                    <th>轮播链接</th>
+                                                    <th>操作</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="siteTable">
+                                                <tr th:each="banner : ${bannerList}">
+                                                    <td th:text="${banner.id}">1</td>
+                                                    <td><img th:src="${banner.banner}"
+                                                            alt="ico" width="20rem"></td>
+                                                    <td><a href="https://www.sogou.com" target="_blank"
+                                                            rel="noopener noreferrer" th:text="${banner.url}">https://www.sogou.com</a></td>
+                                                    <td>
+                                                        <div class="btn-group">
+                                                            <a class="btn btn-xs btn-default banner_edit" href="#!"
+                                                                title="" data-toggle="tooltip" data-original-title=""><i
+                                                                    class="mdi mdi-pencil"></i></a>
+                                                            <a class="btn btn-xs btn-default" href="#!"
+                                                                data-toggle="tooltip"
+                                                                onclick="{if(confirm('确定要删除吗?')) {deleteTr(this); }else {}}"
+                                                                data-original-title="" title=""><i
+                                                                    class="mdi mdi-window-close"></i></a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <footer class="col-md-12">
+                        <p>Copyright &copy; 2022 <a href="https://www.xfabe.com" target="_blank"
+                                rel="noopener noreferrer">小枫网络</a> | by：<a
+                                href="tencent://message/?uin=1809185784&Site=AicTeam&Menu=yes" target="_blank"
+                                rel="noopener noreferrer">小枫</a></p>
+                    </footer>
+                </div>
+
+            </main>
+            <!--End 页面主要内容-->
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/perfect-scrollbar.min.js"></script>
+    <script type="text/javascript" src="js/main.min.js"></script>
+    <script type="text/javascript" src="js/fireworks.js"></script>
+
+    <!-- 对话框 -->
+    <script src="js/jconfirm/jquery-confirm.min.js"></script>
+
+    <script>
+        // 添加轮播
+        $('.banner_add').on('click', function () {
+            $.confirm({
+                title: '添加轮播',
+                content: '' +
+                    '<form action="" class="add_banner">' +
+                    '<div class="form-group">' +
+                    '<label>请输入轮播图标</label>' +
+                    '<input type="text" placeholder="请输入轮播图标" value="" class="banner_ico form-control" required />' +
+                    '</div>' +
+                    '<div class="form-group">' +
+                    '<label>请输入轮播链接</label>' +
+                    '<input type="text" placeholder="请输入轮播链接" value="" class="banner_link form-control" required />' +
+                    '</div>' +
+                    '</form>',
+                buttons: {
+                    formSubmit: {
+                        text: '提交',
+                        btnClass: 'btn-blue',
+                        action: function () {
+                            var banner_ico = this.$content.find('.banner_ico').val();
+                            var banner_link = this.$content.find('.banner_link').val();
+                            if (!banner_ico) {
+                                $.alert('请输入您要添加的轮播图标');
+                                return false;
+                            }
+                            if (!banner_link) {
+                                $.alert('请输入您要添加的轮播链接');
+                                return false;
+                            }
+                            $.ajax({url:`/admin/banner/add?banner=${banner_ico}&url=${banner_link}`,success:()=>{
+                                    location.reload()
+                            }})
+
+                        }
+                    },
+                    cancel: {
+                        text: '取消'
+                    },
+                },
+                onContentReady: function () {
+                    var jc = this;
+                    this.$content.find('form').on('submit', function (e) {
+                        e.preventDefault();
+                        jc.$$formSubmit.trigger('click');
+                    });
+                }
+            });
+        });
+
+        // 修改轮播
+        $('.banner_edit').on('click', function () {
+            console.log(this.parentNode.parentNode.parentElement.children[0].innerText)
+            let currentItemID=this.parentNode.parentNode.parentElement.children[0].innerText
+            $.confirm({
+                title: '修改轮播',
+                content: '' +
+                    '<form action="" class="add_banner">' +
+                    '<div class="form-group">' +
+                    '<label>请输入轮播图标</label>' +
+                    '<input type="text" placeholder="请输入轮播图标" value="https://www.sogou.com/images/logo/new/favicon.ico?v=4" class="banner_ico form-control" required />' +
+                    '</div>' +
+                    '<div class="form-group">' +
+                    '<label>请输入轮播链接</label>' +
+                    '<input type="text" placeholder="请输入轮播链接" value="https://www.sogou.com" class="banner_link form-control" required />' +
+                    '</div>' +
+                    '</form>',
+                buttons: {
+                    formSubmit: {
+                        text: '提交',
+                        btnClass: 'btn-blue',
+                        action: function () {
+                            var banner_ico = this.$content.find('.banner_ico').val();
+                            var banner_link = this.$content.find('.banner_link').val();
+                            if (!banner_ico) {
+                                $.alert('请输入您要修改的轮播图标');
+                                return false;
+                            }
+                            if (!banner_link) {
+                                $.alert('请输入您要修改的轮播链接');
+                                return false;
+                            }
+
+                            //修改请求
+                            $.ajax({url:`/admin/banner/update?id=${currentItemID}&banner=${banner_ico}&url=${banner_link}`,success:()=>{
+                                location.reload();
+                            }})
+
+
+                        }
+                    },
+                    cancel: {
+                        text: '取消'
+                    },
+                },
+                onContentReady: function () {
+                    var jc = this;
+                    this.$content.find('form').on('submit', function (e) {
+                        e.preventDefault();
+                        jc.$$formSubmit.trigger('click');
+                    });
+                }
+            });
+        });
+        
+        // 删除表格
+        function deleteTr(obj) {
+            //通过this找到父级元素节点
+            var tr = obj.parentNode.parentNode.parentElement
+            //找到表格
+            var tbody = tr.parentNode
+            //删除行
+
+            // }
+            $.get("/admin/banner/del?id="+tr.children[0].innerText)
+            location.reload()
+        }
+
+        // 保存
+        $('.banner_pres').on('click', function () {
+            $.confirm({
+                title: '保存成功',
+                content: '',
+                type: 'orange',
+                typeAnimated: false,
+                buttons: {
+                    omg: {
+                        text: '知道了',
+                        btnClass: 'btn-orange',
+                    }
+                }
+            });
+        });
+    </script>
+
+    <script>
+        function uploadFile(_this) {
+            let url = '/admin/upload'
+            formData = new FormData();
+            //uploadFile就是后台接收的文件参数名称
+            formData.append("file", $(_this)[0].files[0]);
+            jQuery.ajax({
+                type: "post",
+                url: url,
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    let fileNameInput = _this.parentNode.parentNode.children[0]
+                    console.log(fileNameInput,data);
+                    $(fileNameInput).val(data)
+
+                },
+            });
+        }
+    </script>
+</body>
+
+</html>

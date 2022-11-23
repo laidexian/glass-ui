@@ -1,0 +1,511 @@
+// PC端
+:root {
+    // 毛玻璃阴影one
+    --xf_glass: .0104rem .0104rem .026rem 0 rgba(0, 0, 0, .15), inset .0052rem .0052rem .0052rem 0 rgba(255, 255, 255, .3);
+    // 毛玻璃背景色
+    --xf_glass_color: rgba(255, 255, 255, .2);
+    --xf_glass_color_1: rgba(0, 0, 0, .15);
+    --xf_glass_color_2: rgba(255, 255, 255, .3);
+    --xf_glass_color_3: rgba(255, 255, 255, .5);
+    --xf_glass_color_4: rgba(255, 255, 255, .1);
+    // 毛玻璃模糊效果
+    --xf_glass_blur: blur(.0417rem);
+    // 毛玻璃外阴影
+    --xf_glass_shadow: .0078rem .0135rem 7px 0 rgba(0, 0, 0, .15), inset -.0078rem -.0135rem .0156rem 0 rgba(0, 0, 0, .3), inset .0078rem .0135rem .0156rem 0 rgba(255, 255, 255, .3);
+    // 毛玻璃内阴影
+    --xf_glass_shadow_inset: inset .0078rem .0135rem .0156rem 0 rgba(0, 0, 0, .3), inset -.0078rem -.0135rem .0156rem 0 rgba(255, 255, 255, .3);
+    // 进度条底部颜色
+    --xf_glass_shadow_solid_bottom: .0052rem .0052rem .0104rem rgba(42, 42, 42, .25), inset -.0052rem -.0052rem .0104rem #fff;
+    --xf_shadow_friend: 0 0 .0313rem .0104rem rgba(255, 255, 255, .6);
+    // 毛玻璃圆角
+    --xf_glass_radius: .1041665rem;
+    --xf-black: #000;
+    // 白色
+    --xf_white: #fff;
+    // 灰色
+    --xf_grey: #ccc;
+    // 淡紫色
+    --xf_lilac_colour: rgba(187, 142, 250, .4);
+    // 文本阴影
+    --xf_text_shadow: .0104rem .0104rem .0052rem rgba(0, 0, 0, .3);
+    // 渐变颜色
+    --xf_gradient_1: #8ca0d4, #a6e6ff;
+    --xf_gradient_2: #bb8efa 28%, #b6ffff 100%;
+    --xf_gradient_3: #e78e9c, #e7b573;
+    --xf_gradient_4: #7e00ff 0%, #00fff6 100%;
+    --xf_gradient_5: #70f7fe, #fbd7c6, #fdefac, #bfb5dd, #bed5f5;
+    --xf_gradient_6: 1.5625vw 0 #d5b67a, 3.125vw 0 #0078ff;
+}
+
+// 移动端
+@media screen and (max-width: 992px) {
+    :root {
+        // 毛玻璃阴影one
+        --xf_glass: .03rem .03rem .078rem 0 rgba(0, 0, 0, .15), inset .052rem .052rem .052rem 0 rgba(255, 255, 255, .3) !important;
+        // 毛玻璃背景色
+        --xf_glass_color: rgba(255, 255, 255, .2);
+        --xf_glass_color_1: rgba(0, 0, 0, .25);
+        --xf_glass_color_2: rgba(255, 255, 255, .3);
+        --xf_glass_color_3: rgba(255, 255, 255, .5);
+        --xf_glass_color_4: rgba(255, 255, 255, .1);
+        // 毛玻璃模糊效果
+        --xf_glass_blur: blur(.0417rem * 3) !important;
+        // 毛玻璃外阴影
+        --xf_glass_shadow: .0078rem*3 .0135rem*3 7px 0 rgba(0, 0, 0, .15), inset -.0078rem*3 -.0135rem*3 .0156rem*3 0 rgba(0, 0, 0, .3), inset .0078rem*3 .0135rem*3 .0156rem*3 0 rgba(255, 255, 255, .3) !important;
+        // 毛玻璃内阴影
+        --xf_glass_shadow_inset: inset .0078rem*3 .0135rem*3 .0156rem*3 0 rgba(0, 0, 0, .3), inset -.0078rem*3 -.0135rem*3 .0156rem*3 0 rgba(255, 255, 255, .3) !important;
+        // 进度条底部颜色
+        --xf_glass_shadow_solid_bottom: .0052rem*3 .0052rem*3 .0104rem*3 rgba(42, 42, 42, .25), inset -.0052rem*3 -.0052rem*3 .0104rem*3 #fff !important;
+        --xf_shadow_friend: 0 0 .0313rem*3 .0104rem*3 rgba(255, 255, 255, .6) !important;
+        // 毛玻璃圆角
+        --xf_glass_radius: .25rem;
+        // 白色
+        --xf_white: #fff;
+        // 灰色
+        --xf_grey: #ccc;
+        // 淡紫色
+        --xf_lilac_colour: rgba(187, 142, 250, .4) !important;
+        // 文本阴影
+        --xf_text_shadow: .0104rem*3 .0104rem*3 .0052rem*3 rgba(0, 0, 0, .3) !important;
+        // 渐变颜色
+        --xf_gradient_1: #8ca0d4, #a6e6ff;
+        --xf_gradient_2: #bb8efa 28%, #b6ffff 100%;
+        --xf_gradient_3: #e78e9c, #e7b573;
+        --xf_gradient_4: #7e00ff 0%, #00fff6 100%;
+        --xf_gradient_5: #70f7fe, #fbd7c6, #fdefac, #bfb5dd, #bed5f5;
+        --xf_gradient_6: 1.5625vw*3 0 #d5b67a, 3.125vw*3 0 #0078ff;
+    }
+
+    // 毛玻璃效果
+    .xf_glass {
+        // 模糊效果
+        -moz-backdrop-filter: var(--xf_glass_blur);
+        -ms-backdrop-filter: var(--xf_glass_blur);
+        -webkit-backdrop-filter: var(--xf_glass_blur);
+        backdrop-filter: var(--xf_glass_blur);
+        // 背景颜色
+        -moz-background-color: var(--xf_glass_color);
+        -webkit-background-color: var(--xf_glass_color);
+        -ms-background-color: var(--xf_glass_color);
+        -o-background-color: var(--xf_glass_color);
+        background-color: var(--xf_glass_color);
+        // 内阴影，外阴影
+        -moz-box-shadow: .0078rem*3 .0135rem*3 7px 0 rgba(0, 0, 0, .15), inset -.0078rem*3 -.0135rem*3 .0156rem*3 0 rgba(0, 0, 0, .3), inset .0078rem*3 .0135rem*3 .0156rem*3 0 rgba(255, 255, 255, .3) !important;
+        -webkit-box-shadow: .0078rem*3 .0135rem*3 7px 0 rgba(0, 0, 0, .15), inset -.0078rem*3 -.0135rem*3 .0156rem*3 0 rgba(0, 0, 0, .3), inset .0078rem*3 .0135rem*3 .0156rem*3 0 rgba(255, 255, 255, .3) !important;
+        -ms-box-shadow: .0078rem*3 .0135rem*3 7px 0 rgba(0, 0, 0, .15), inset -.0078rem*3 -.0135rem*3 .0156rem*3 0 rgba(0, 0, 0, .3), inset .0078rem*3 .0135rem*3 .0156rem*3 0 rgba(255, 255, 255, .3) !important;
+        -o-box-shadow: .0078rem*3 .0135rem*3 7px 0 rgba(0, 0, 0, .15), inset -.0078rem*3 -.0135rem*3 .0156rem*3 0 rgba(0, 0, 0, .3), inset .0078rem*3 .0135rem*3 .0156rem*3 0 rgba(255, 255, 255, .3) !important;
+        box-shadow: .0078rem*3 .0135rem*3 7px 0 rgba(0, 0, 0, .15), inset -.0078rem*3 -.0135rem*3 .0156rem*3 0 rgba(0, 0, 0, .3), inset .0078rem*3 .0135rem*3 .0156rem*3 0 rgba(255, 255, 255, .3) !important;
+        // 圆角
+        -moz-border-radius: var(--xf_glass_radius);
+        -webkit-border-radius: var(--xf_glass_radius);
+        border-radius: var(--xf_glass_radius);
+    }
+}
+
+// 去掉所有元素边框的内边距
+* {
+    padding: 0;
+    margin: 0;
+    -o-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+// 毛玻璃效果
+.xf_glass {
+    // 模糊效果
+    -moz-backdrop-filter: var(--xf_glass_blur);
+    -webkit-backdrop-filter: var(--xf_glass_blur);
+    -ms-backdrop-filter: var(--xf_glass_blur);
+    backdrop-filter: var(--xf_glass_blur);
+    // 背景颜色
+    -moz-background-color: var(--xf_glass_color);
+    -webkit-background-color: var(--xf_glass_color);
+    -ms-background-color: var(--xf_glass_color);
+    -o-background-color: var(--xf_glass_color);
+    background-color: var(--xf_glass_color);
+    // 内阴影，外阴影
+    -moz-box-shadow: var(--xf_glass_shadow);
+    -webkit-box-shadow: var(--xf_glass_shadow);
+    -ms-box-shadow: var(--xf_glass_shadow);
+    -o-box-shadow: var(--xf_glass_shadow);
+    box-shadow: var(--xf_glass_shadow);
+    // 圆角
+    -moz-border-radius: var(--xf_glass_radius);
+    -webkit-border-radius: var(--xf_glass_radius);
+    border-radius: var(--xf_glass_radius);
+}
+
+// 加载动画
+.xf_load {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    z-index: 1809185784;
+    // background: url(../images/xf-load.gif) no-repeat center center;
+    background-color: #000;
+    // -webkit-backdrop-filter: blur(.1042rem);
+    // backdrop-filter: blur(.1042rem);
+
+
+    span {
+        font-family: 'jianyuanti';
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
+        font-size: .5rem;
+        color: #fff;
+        letter-spacing: .09rem;
+        -moz-animation: xf-load 1.2s infinite alternate ease-in-out;
+        -webkit-animation: xf-load 1.2s infinite alternate ease-in-out;
+        animation: xf-load 1.2s infinite alternate ease-in-out;
+        user-select: none;
+    }
+}
+
+@keyframes xf-load {
+    to {
+        -webkit-opacity: 0.08;
+        opacity: 0.08;
+        /* 滤镜：模糊效果 */
+        -webkit-filter: blur(5px);
+        filter: blur(5px);
+        letter-spacing: .09rem;
+    }
+}
+
+// 鼠标样式
+html,
+body,
+// 天气
+.wv-f-col-4 li a {
+    // 普通指针
+    cursor: url(../pointer/Pointer.cur), auto !important;
+
+    // 拖动弹窗
+    .jconfirm-box-container .jconfirm-box .jconfirm-title-c {
+        cursor: url(../pointer/SizeAll.cur), auto !important;
+    }
+
+    a,
+    // 搜索按钮
+    input[type=submit],
+    // 微信图片
+    .xf_ico_banner #xf_wxImg,
+    #myModal .close,
+    // 轮播
+    .swiper-button-next,
+    .swiper-button-prev,
+    // 转发&留言
+    .xf_zhuanfa,
+    .xf_liuyan,
+    // 弹窗
+    .swal-button,
+    .jconfirm-box-container .jconfirm-box .jconfirm-buttons button[type=button],
+    // 音乐按钮
+    #icon-rotate,
+    #pre,
+    #pause,
+    #next,
+    // 3D旋转
+    #xf-friend-rotate {
+        // 小手
+        cursor: url(../pointer/Link.cur), auto;
+    }
+
+    input[type=text],
+    input[type=password],
+    input[type=email] {
+        // 文字
+        cursor: url(../pointer/Text.cur), auto;
+    }
+
+    .xf_tx img {
+        // 摸摸
+        cursor: url(../pointer/Move.cur), auto;
+    }
+}
+
+// 定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸
+&::-webkit-scrollbar {
+    width: .0365rem;
+    height: .0365rem;
+    -webkit-background-color: rgba(225, 225, 225, .2);
+    background-color: rgba(225, 225, 225, .2);
+}
+
+// 定义滚动条轨道 内阴影+圆角
+&::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 .0313rem #cfcfd1;
+    box-shadow: inset 0 0 .0313rem #cfcfd1;
+    border-radius: .0521rem;
+    -webkit-background-color: rgba(225, 225, 225, .2);
+    background-color: rgba(225, 225, 225, .2);
+}
+
+// 定义滑块 内阴影+圆角
+&::-webkit-scrollbar-thumb {
+    border-radius: .0521rem;
+    background-color: var(--xf_white);
+}
+
+// 鼠标选中样式
+::selection {
+    background: #bb8efa;
+    color: var(--xf_white);
+}
+
+:-webkit-selection {
+    background: #bb8efa;
+    color: var(--xf_white);
+}
+
+::-moz-selection {
+    background: #bb8efa;
+    color: var(--xf_white);
+}
+
+// 弹窗样式
+.swal-modal {
+    width: 2.4896rem;
+    margin: .1042rem auto;
+    // 模糊效果
+    -webkit-backdrop-filter: var(--xf_glass_blur);
+    backdrop-filter: var(--xf_glass_blur);
+    // 背景颜色
+    -webkit-background-color: rgba(255, 255, 255, .4);
+    background-color: rgba(255, 255, 255, .4);
+    -webkit-box-shadow: 0 0 .0313rem .0052rem rgba(255, 255, 255, 0.5);
+    box-shadow: 0 0 .0313rem .0052rem rgba(255, 255, 255, 0.5);
+
+    // 标题
+    .swal-title {
+        font-family: 'jianyuanti';
+        color: var(--xf_white);
+        padding: 1% 3%;
+        font-size: .2rem;
+        letter-spacing: 3px;
+        font-weight: normal;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, .3);
+    }
+
+    // input
+    .swal-content__input {
+        background-color: var(--xf_glass_color_2);
+        color: var(--xf_white);
+    }
+
+    .swal-content__input:focus,
+    .swal-content__textarea:focus {
+        border-color: var(--xf_glass_color_3);
+    }
+
+    // 文字
+    .swal-text {
+        color: var(--xf_white);
+        font-size: .1042rem;
+    }
+
+    .swal-text:first-child {
+        margin-top: .2344rem;
+    }
+
+    .swal-footer {
+        margin-top: .0677rem;
+        padding: .0677rem .0833rem;
+    }
+
+    // 弹窗颜色按钮
+    .swal-button {
+        font-size: .0833rem;
+        padding: .0521rem .125rem;
+        background: -o-linear-gradient(bottom, #8ca0d4, #a6e6ff);
+        background: -ms-linear-gradient(bottom, #8ca0d4, #a6e6ff);
+        background: -moz-linear-gradient(bottom, #8ca0d4, #a6e6ff);
+        background: -webkit-linear-gradient(bottom, #8ca0d4, #a6e6ff);
+        background: linear-gradient(bottom, #8ca0d4, #a6e6ff);
+    }
+}
+
+// jquery弹窗
+.jconfirm.jconfirm-white .jconfirm-bg,
+.jconfirm.jconfirm-light .jconfirm-bg {
+    background-color: var(--xf-black);
+}
+
+.jconfirm .jconfirm-box div.jconfirm-content-pane .jconfirm-content {
+    overflow: hidden;
+    text-align: center;
+}
+
+.jconfirm-box {
+    -webkit-backdrop-filter: var(--xf_glass_blur) !important;
+    backdrop-filter: var(--xf_glass_blur) !important;
+    -webkit-background-color: var(--xf_glass_color) !important;
+    background-color: var(--xf_glass_color) !important;
+    box-shadow: 0 0 5px 1px var(--xf_glass_color_3) !important;
+    padding: .18rem .12rem 0 !important;
+    border-radius: .0521rem !important;
+
+    .form-group {
+        margin-top: .1rem;
+    }
+
+    .jconfirm-title-c .jconfirm-title,
+    .jconfirm-content-pane .jconfirm-content input,
+    .jconfirm-content div {
+        color: var(--xf_white) !important;
+        display: block;
+    }
+
+    .jconfirm-title-c .jconfirm-title,
+    .jconfirm-content div {
+        font-family: 'jianyuanti' !important;
+        font-size: .12rem !important;
+        text-shadow: 1px 1px 2px var(--xf_glass_color_1);
+    }
+
+    .jconfirm-title-c .jconfirm-title {
+        position: relative;
+        font-size: .2rem !important;
+
+        &::before,
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -0.1042rem;
+            left: 0;
+            width: 20%;
+            height: .026rem;
+            border-radius: .026rem;
+            background-color: #8ca0d4;
+        }
+
+        &::after {
+            left: 15%;
+            z-index: -1;
+            background-color: #a6e6ff;
+        }
+    }
+
+    // 弹窗样式
+    .form-control {
+        display: block;
+        width: 100%;
+        padding: .0469rem .0833rem;
+        font-size: .0938rem;
+        color: var(--xf_white);
+        line-height: 1.5;
+        -webkit-background-color: var(--xf_glass_color);
+        background-image: none;
+        background-color: var(--xf_glass_color);
+        background-image: none;
+        border: 1px solid var(--xf_grey);
+        border-radius: 4px;
+        -webkit-transition: border-color ease-in-out .2s, -webkit-box-shadow ease-in-out .15s;
+        -o-transition: border-color ease-in-out .2s, box-shadow ease-in-out .15s;
+        transition: border-color ease-in-out .2s, box-shadow ease-in-out .15s;
+
+        &:focus {
+            border-color: var(--xf_white);
+            outline: 0;
+        }
+    }
+}
+
+// 弹窗按钮
+.jconfirm .jconfirm-box .jconfirm-buttons button.btn-blue {
+    font-size: .0833rem;
+    padding: .0521rem .125rem;
+    background-color: #e78e9c;
+    background: -o-linear-gradient(bottom, #e78e9c, #e7b573);
+    background: -ms-linear-gradient(bottom, #e78e9c, #e7b573);
+    background: -moz-linear-gradient(bottom, #e78e9c, #e7b573);
+    background: -webkit-linear-gradient(bottom, #e78e9c, #e7b573);
+    background: linear-gradient(bottom, #e78e9c, #e7b573);
+    color: var(--xf_white);
+    border-radius: .0313rem !important;
+
+    &:hover {
+        -webkit-animation: xf-btn-color-blue forwards .5s;
+        animation: xf-btn-color-blue forwards .5s;
+
+        @keyframes xf-btn-color-blue {
+            100% {
+                background: -o-linear-gradient(top, #e78e9c, );
+                background: -ms-linear-gradient(top, #e78e9c, #e7b573);
+                background: -moz-linear-gradient(top, #e78e9c, #e7b573);
+                background: -webkit-linear-gradient(top, #e78e9c, #e7b573);
+                background: linear-gradient(top, #e78e9c, #e7b573);
+            }
+        }
+    }
+}
+
+.jconfirm.jconfirm-light .jconfirm-box .jconfirm-buttons button.btn-default {
+    font-size: .0833rem;
+    padding: .0521rem .125rem;
+    background-color: #8ca0d4;
+    background: -o-linear-gradient(bottom, #8ca0d4, #a6e6ff);
+    background: -ms-linear-gradient(bottom, #8ca0d4, #a6e6ff);
+    background: -moz-linear-gradient(bottom, #8ca0d4, #a6e6ff);
+    background: -webkit-linear-gradient(bottom, #8ca0d4, #a6e6ff);
+    background: linear-gradient(bottom, #8ca0d4, #a6e6ff);
+    color: var(--xf_white);
+    border-radius: .0313rem !important;
+
+    &:hover {
+        -webkit-animation: xf-btn-color forwards .5s;
+        animation: xf-btn-color forwards .5s;
+
+        @keyframes xf-btn-color {
+            100% {
+                background: -o-linear-gradient(top, #8ca0d4, );
+                background: -ms-linear-gradient(top, #8ca0d4, #a6e6ff);
+                background: -moz-linear-gradient(top, #8ca0d4, #a6e6ff);
+                background: -webkit-linear-gradient(top, #8ca0d4, #a6e6ff);
+                background: linear-gradient(top, #8ca0d4, #a6e6ff);
+            }
+        }
+    }
+}
+
+.jconfirm.jconfirm-light .jconfirm-box .jconfirm-buttons button.btn-default:hover {
+    background: #a6e6ff;
+}
+
+.jconfirm .jconfirm-box {
+    margin-left: 35%;
+    margin-right: 35%;
+}
+
+// 使图片变亮
+.xf_img_light {
+    // Chrome, Safari, Opera
+    -webkit-filter: brightness(120%), ;
+    filter: brightness(120%);
+}
+
+// 对比度
+img {
+    // Chrome, Safari, Opera
+    -webkit-filter: contrast(110%);
+    filter: contrast(110%);
+}
+
+// 当鼠标经过这个头像头像就会发光
+.xf_tx {
+    -webkit-transition: box-shadow .3s;
+    transition: box-shadow .3s;
+}
+
+.xf_tx:hover {
+    -webkit-box-shadow: 0 0 7px 7px rgba(255, 255, 255, .3);
+    box-shadow: 0 0 7px 7px rgba(255, 255, 255, .3);
+}

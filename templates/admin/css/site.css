@@ -1,0 +1,122 @@
+.form-control:focus {
+    border-color: var(--text-color-2);
+    outline: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.card {
+    border-radius: 10px;
+}
+
+.card-header h4 {
+    color: var(--text-color-1);
+    font-weight: bold;
+    font-size: 2rem;
+}
+
+label {
+    color: var(--text-color-1);
+}
+
+.help-block {
+    color: var(--text-color-5);
+}
+
+.dropdown-menu {
+    color: var(--text-white);
+    background-image: -moz-linear-gradient(var(--xf-Gradient-background-2));
+    background-image: -o-linear-gradient(var(--xf-Gradient-background-2));
+    background-image: -webkit-linear-gradient(var(--xf-Gradient-background-2));
+    background-image: linear-gradient(var(--xf-Gradient-background-2));
+}
+
+.upload-box {
+    overflow: hidden;
+}
+
+.upload-box .xf_upload {
+    position: absolute;
+    font-size: 2.4rem;
+    z-index: 3;
+    -webkit-opacity: 0;
+    opacity: 0;
+}
+
+.lyear-switch span {
+    background-color: var(--text-color-5);
+}
+
+/* 表格 */
+@media screen and (max-width: 767px) {
+    .table-responsive {
+        border-color: var(--text-color-5);
+    }
+}
+
+.table-bordered,
+.table>tbody>tr>td,
+.table>tbody>tr>th,
+.table>tfoot>tr>td,
+.table>tfoot>tr>th,
+.table>thead>tr>td,
+.table>thead>tr>th {
+    border-color: var(--text-color-5);
+    border: 1px solid var(--text-color-5);
+    text-align: center;
+}
+
+.lyear-checkbox span::before,
+.lyear-radio span::before {
+    border: 2px solid var(--text-color-5);
+}
+
+.lyear-checkbox:hover span::before,
+.lyear-radio:hover span::before {
+    border: 2px solid var(--text-color-1);
+}
+
+.card-body .table-bordered {
+    color: var(--text-color-1);
+}
+
+.checkbox-primary input:checked~span::before {
+    background-color: var(--text-color-0);
+    border-color: var(--text-color-0);
+}
+
+.btn-default {
+    background-color: var(--text-color-1);
+    border-color: var(--text-color-2);
+    color: var(--text-white);
+}
+
+/* 弹窗 */
+.jconfirm .jconfirm-box {
+    -webkit-background-color: var(--xf-box-background-1);
+    background-color: var(--xf-box-background-1);
+    -webkit-backdrop-filter: var(--xf_glass_blur);
+    backdrop-filter: var(--xf_glass_blur);
+    border-radius: 5px !important;
+}
+
+.jconfirm .jconfirm-box div.jconfirm-title-c {
+    color: var(--text-color-1);
+    font-weight: bold;
+    font-size: 2rem;
+    -webkit-text-shadow: 1px 1px 1px rgba(255, 255, 255, .5);
+    text-shadow: 1px 1px 1px rgba(255, 255, 255, .5);
+}
+
+.jconfirm .jconfirm-box .jconfirm-buttons button.btn-blue {
+    background-color: var(--xf-box-purpureus);
+    transition: background-color .5s;
+}
+
+.jconfirm .jconfirm-box .jconfirm-buttons button.btn-blue:hover {
+    background-color: #a189f8;
+}
+
+.jconfirm .jconfirm-box div.jconfirm-content-pane .jconfirm-content div {
+    color: var(--text-color-1);
+}

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>留言列表 - 毛玻璃拟态UI后台管理系统</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/materialdesignicons.min.css">
+    <!--对话框-->
+    <link rel="stylesheet" href="js/jconfirm/jquery-confirm.min.css">
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="icon/iconfont.css">
+    <link rel="stylesheet" href="css/site.css">
+    <style>
+        #siteTable tr td img {
+            -webkit-border-radius: 50%;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="lyear-layout-web">
+        <div class="lyear-layout-container">
+            <!--左侧导航-->
+            <aside class="lyear-layout-sidebar xf_glass">
+
+                <!-- logo -->
+                <div id="logo" class="sidebar-header">
+                    <a href="index.html"><img src="images/admin-logo.png" alt="LOGO" /></a>
+                </div>
+                <div class="lyear-layout-sidebar-scroll">
+
+                    <nav class="sidebar-main">
+                        <ul class="nav nav-drawer">
+                            <li class="nav-item"><a href="index.html"><i class="iconfont icon-shouyefill"></i> 后台首页</a>
+                            </li>
+                            <li class="nav-item"><a href="set.html"><i class="iconfont icon-huaban34"></i> 基础设置</a></li>
+                            <li class="nav-item"><a href="inf.html"><i class="iconfont icon-wodexinxi_jibenxinxi"></i>
+                                    我的信息</a></li>
+                            <li class="nav-item"><a href="site.html"><i class="iconfont icon-wangzhangaofang"></i>
+                                    旗下站点</a></li>
+                            <li class="nav-item xf-active"><a href="msg.html"><i class="iconfont icon-liuyan"></i>
+                                    留言列表</a></li>
+                            <li class="nav-item"><a href="friend.html"><i class="iconfont icon-tianjiahaoyou-"></i>
+                                    添加好友</a></li>
+                            <li class="nav-item"><a href="update.html"><i class="iconfont icon-banbengengxin"></i>
+                                    更新日志</a></li>
+                        </ul>
+                    </nav>
+                    <div>
+            </aside>
+            <!--End 左侧导航-->
+
+            <!--头部信息-->
+            <header class="lyear-layout-header xf_glass">
+
+                <nav class="navbar navbar-default">
+                    <div class="topbar">
+
+                        <div class="topbar-left">
+                            <div class="lyear-aside-toggler">
+                                <span class="lyear-toggler-bar"></span>
+                                <span class="lyear-toggler-bar"></span>
+                                <span class="lyear-toggler-bar"></span>
+                            </div>
+                            <div class="xf_search">
+                                <form action="https://www.baidu.com/baidu" target="_blank">
+                                    <input type="submit" value=""><i class="iconfont icon-sousuo"></i>
+                                    <input type="text" name="word" size="30" autocomplete="off" placeholder="百度一下">
+                                </form>
+                            </div>
+                        </div>
+
+                        <ul class="topbar-right">
+                            <li class="dropdown dropdown-profile">
+                                <a href="javascript:void(0)" data-toggle="dropdown" aria-expanded="false">
+                                    <img class="img-avatar img-avatar-48 m-r-10" th:src="${'https://q2.qlogo.cn/headimg_dl?dst_uin='+session.qq+'1809185784&spec=100'}" alt="admin" />
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li> <a href="pwd.html"><i class="mdi mdi-lock-outline"></i> 修改密码</a> </li>
+                                    <li> <a href="/logout"><i class="mdi mdi-logout-variant"></i> 退出登录</a> </li>
+                                </ul>
+                            </li>
+                            <li class="xf-author"><a href="tencent://message/?uin=1809185784&Site=AicTeam&Menu=yes"
+                                                     target="_blank" rel="noopener noreferrer"
+                                                     class="tooltips iconfont icon-xiaoxi"><span>联系作者</span></a></li>
+                        </ul>
+
+                    </div>
+                </nav>
+
+            </header>
+            <!--End 头部信息-->
+
+            <!--页面主要内容-->
+            <main class="lyear-layout-content">
+
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4>留言列表</h4>
+                                </div>
+                                <div class="card-toolbar clearfix">
+                                    <div class="toolbar-btn-action">
+                                        <a class="btn btn-danger" href="#!" onclick="{if(confirm('确定要删除吗?')) {mytbody(); }else {}}"><i class="mdi mdi-window-close"></i>
+                                            全部删除</a>
+                                        <a class="btn btn-warning m-r-5 msg_pres" href="#!"><i class="mdi mdi-check"></i> 保存</a>
+                                    </div>
+                                </div>
+                                <div class="card-body">
+
+                                    <div class="table-responsive">
+                                        <table class="table table-bordered">
+                                            <thead>
+                                                <tr>
+                                                    <th>编号</th>
+                                                    <th>头像</th>
+                                                    <th>QQ邮箱</th>
+                                                    <th>留言(已限制50个字符)</th>
+                                                    <th>IP(一个IP每天只能提交3次)</th>
+                                                    <th>操作</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="siteTable">
+                                                <tr th:each="message : ${messageList}">
+                                                    <td th:text="${message.id}">1</td>
+                                                    <td><img th:src="${message.avatar}"
+                                                            alt="tx" width="25rem"></td>
+                                                    <td th:text="${message.mail}">1809185784@qq.com</td>
+                                                    <td th:text="${message.message}">测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试测试</td>
+                                                    <td th:text="${message.ip}">127.0.0.1</td>
+                                                    <td>
+                                                        <div class="btn-group">
+                                                            <a class="btn btn-xs btn-default" href="#!"
+                                                                data-toggle="tooltip"
+                                                                onclick="{if(confirm('确定要删除吗?')) {deleteTr(this); }else {}}"
+                                                                data-original-title="" title=""><i
+                                                                    class="mdi mdi-window-close"></i></a>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <footer class="col-md-12">
+                        <p>Copyright &copy; 2022 <a href="https://www.xfabe.com" target="_blank"
+                                rel="noopener noreferrer">小枫网络</a> | by：<a
+                                href="tencent://message/?uin=1809185784&Site=AicTeam&Menu=yes" target="_blank"
+                                rel="noopener noreferrer">小枫</a></p>
+                    </footer>
+                </div>
+
+            </main>
+            <!--End 页面主要内容-->
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/perfect-scrollbar.min.js"></script>
+    <script type="text/javascript" src="js/main.min.js"></script>
+    <script type="text/javascript" src="js/fireworks.js"></script>
+
+    <!-- 对话框 -->
+    <script src="js/jconfirm/jquery-confirm.min.js"></script>
+    <script>
+        // 删除表格
+        function deleteTr(obj) {
+            //通过this找到父级元素节点
+            var tr = obj.parentNode.parentNode.parentNode
+            //找到表格
+            var tbody = tr.parentNode
+            //删除行
+            tbody.removeChild(tr)
+            //只剩行首时删除表格
+            // if (tbody.rows.length == 1) {
+            tbody.parentNode.removeChild(tbody)
+            // }
+
+            $.ajax({url:`/admin/message/del?id=${tr.children[0].innerText}`,success:()=>{
+                    location.reload()
+                }})
+        }
+
+        // 删除表格所有内容
+        function mytbody() {
+            $.ajax({url:`/admin/message/delall`,success:()=>{
+                    $('tbody').find('tr').remove()
+                }})
+
+        }
+        // 保存
+        $('.msg_pres').on('click', function () {
+            $.confirm({
+                title: '保存成功',
+                content: '',
+                type: 'orange',
+                typeAnimated: false,
+                buttons: {
+                    omg: {
+                        text: '知道了',
+                        btnClass: 'btn-orange',
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+
+</html>

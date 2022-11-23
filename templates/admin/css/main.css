@@ -1,0 +1,387 @@
+/** ----------------------------------
+ * 小枫网络-毛玻璃拟态UI
+ * 基于光年框架
+ * https://www.xfabe.com
+ * 小枫QQ：1809185784
+ -------------------------------------- */
+
+/* 页面框架初始化 */
+:root {
+    --text-white: #fff;
+    --text-black: #000;
+    --text-color-0: #a27bf7;
+    --text-color-1: #8177db;
+    --text-color-2: #ada5e9;
+    --text-color-3: #ff378c;
+    --text-color-4: #ff9000;
+    --text-color-5: #c0b5e1;
+    --xf-box-red: #ff765b;
+    --xf-box-purples: #4497fd;
+    --xf-box-purpureus: #a252f8;
+    --xf-box-background-1: rgba(255, 255, 255, .3);
+    --xf-box-background-2: rgba(225, 225, 225, .2);
+    --xf-box-background-3: rgba(0, 0, 0, .6);
+    --xf-box-background-4: rgba(207, 201, 255, .1);
+    --xf-Gradient-background-1: -45deg, #ff8bda, skyblue, #f8ffd2;
+    /* 告示牌 */
+    --xf-Gradient-background-2: 120deg, #879bfe 0%, #5165f6 100%;
+    --xf-Gradient-background-3: 120deg, #c08bf8 0%, #a252f8 100%;
+    --xf-Gradient-background-4: 120deg, #ffa897 0%, #ff765b 100%;
+    --xf-Gradient-background-5: 120deg, #89c3f8 0%, #4497fd 100%;
+    --xf_glass: 2px 2px 5px 0 rgba(0, 0, 0, .15), inset .1px.1px.1px rgba(255, 255, 255, .3);
+    --xf_glass_blur: blur(6px);
+    --xf_text_shadow: 1px 1px 0 rgba(154, 127, 238, .5);
+}
+
+a {
+    color: var(--xf-box-purples);
+}
+
+/* 框架 */
+iframe {
+    width: 100%;
+}
+
+.xf_glass {
+    -moz-backdrop-filter: var(--xf_glass_blur);
+    -webkit-backdrop-filter: var(--xf_glass_blur);
+    -ms-backdrop-filter: var(--xf_glass_blur);
+    -o-backdrop-filter: var(--xf_glass_blur);
+    backdrop-filter: var(--xf_glass_blur);
+}
+
+.card {
+    background-color: var(--xf-box-background-1);
+}
+
+.form-control {
+    -webkit-background-color: rgba(218, 214, 255, .3);
+    background-color: rgba(218, 214, 255, .3);
+    -webkit-border-color: rgba(129, 119, 219, .3);
+    border-color: rgba(129, 119, 219, .3);
+    color: var(--text-color-1);
+}
+
+.form-control::-webkit-input-placeholder {
+    color: rgba(97, 86, 192, .5);
+}
+
+.form-control::-moz-input-placeholder {
+    color: rgba(97, 86, 192, .5);
+}
+
+.form-control::-ms-input-placeholder {
+    color: rgba(97, 86, 192, .5);
+}
+
+/* input输入框样式 */
+.form-control:focus {
+    border-color: rgba(255, 255, 255, .3);
+    outline: 0;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, .03), 0 0 8px #8177db;
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, .03), 0 0 8px #8177db;
+}
+
+input::-webkit-input-placeholder {
+    /* WebKit, Blink, Edge */
+    color: rgba(97, 86, 192, .5);
+}
+
+:-moz-placeholder {
+    /* Mozilla Firefox 4 to 18 */
+    color: rgba(97, 86, 192, .5);
+}
+
+::-moz-placeholder {
+    /* Mozilla Firefox 19+ */
+    color: rgba(97, 86, 192, .5);
+}
+
+input:-ms-input-placeholder {
+    /* Internet Explorer 10-11 */
+    color: rgba(97, 86, 192, .5);
+}
+
+input::-ms-input-placeholder {
+    /* Microsoft Edge */
+    color: rgba(97, 86, 192, .5);
+}
+
+/* 定义滚动条高宽及背景 高宽分别对应横竖滚动条的尺寸 */
+::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+    -webkit-background-color: var(--xf-box-background-2);
+    background-color: var(--xf-box-background-2);
+}
+
+/* 定义滚动条轨道 内阴影+圆角 */
+::-webkit-scrollbar-track {
+    border-radius: 10px;
+    -webkit-background-color: var(--xf-box-background-2);
+    background-color: var(--xf-box-background-2);
+}
+
+/* 定义滑块 内阴影+圆角 */
+::-webkit-scrollbar-thumb {
+    border-radius: 10px;
+    background-color: var(--text-color-2);
+}
+
+/* 鼠标选中样式 */
+::selection {
+    background: #bb8efa;
+    color: var(--text-white);
+}
+
+:-webkit-selection {
+    background: #bb8efa;
+    color: var(--text-white);
+}
+
+::-moz-selection {
+    background: #bb8efa;
+    color: var(--text-white);
+}
+
+/* iframe选中透明 */
+iframe::selection {
+    background: transparent;
+    color: transparent;
+}
+
+iframe:-webkit-selection {
+    background: transparent;
+    color: var(--text-white);
+}
+
+iframe::-moz-selection {
+    background: transparent;
+    color: transparent;
+}
+
+/* 背景图片 */
+body {
+    background: url(../images/background.webp) no-repeat;
+    background-size: cover;
+    /* 固定背景图片 */
+    -webkit-background-attachment: fixed;
+    background-attachment: fixed;
+}
+
+body::before {
+    content: '';
+    display: block;
+    position: fixed;
+    -webkit-background-color: rgba(203, 172, 255, .2);
+    background-color: rgba(203, 172, 255, .2);
+    width: 100%;
+    min-height: 100%;
+}
+
+/* logo样式 */
+.sidebar-header {
+    padding: 0 15px;
+}
+
+.sidebar-header a img {
+    max-width: 100%;
+}
+
+/* 左侧导航*/
+.lyear-layout-sidebar {
+    box-shadow: none;
+}
+
+.xf-active {
+    background-color: var(--text-color-2);
+    color: var(--text-white) !important;
+}
+
+.nav>li>a:hover {
+    -webkit-background-color: var(--xf-box-background-4);
+    background-color: var(--xf-box-background-4);
+}
+
+/* 导航盒子.3透明度 */
+/* .sidebar-header, */
+.lyear-layout-sidebar-scroll,
+.lyear-layout-header {
+    -webkit-background-color: var(--xf-box-background-1);
+    background-color: var(--xf-box-background-1);
+}
+
+.sidebar-header {
+    background-color: transparent;
+}
+
+.nav>li {
+    font-size: 20px;
+    color: var(--text-color-1);
+}
+
+.nav-drawer>li>a {
+    padding-left: 70px;
+}
+
+.nav-drawer>li>a>i {
+    left: 34px;
+}
+
+/* 顶部导航 */
+.sidebar-header {
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+.lyear-layout-header .navbar,
+.topbar {
+    min-height: 86px;
+}
+
+.lyear-aside-toggler .lyear-toggler-bar {
+    background-color: var(--text-color-1);
+}
+
+/* 搜索框 */
+.xf_search {
+    width: 70%;
+}
+
+.xf_search form {
+    position: relative;
+    display: flex;
+    width: 100%;
+}
+
+/* 去除默认属性 */
+.xf_search form input {
+    background: none;
+    outline: none;
+    border: none;
+}
+
+.xf_search form input:first-child,
+.xf_search form i {
+    position: absolute;
+    width: 30px;
+    top: 0;
+    height: 100%;
+    color: var(--text-color-1);
+}
+
+.xf_search form i {
+    z-index: -1;
+    -webkit-transform: translate(25%, 25%);
+    transform: translate(25%, 25%);
+}
+
+.xf_search form input:last-child {
+    width: 100%;
+    border: 1px solid var(--text-white);
+    -webkit-background-color: var(--xf-box-background-1);
+    background-color: var(--xf-box-background-1);
+    border-radius: 5px;
+    color: var(--text-color-1);
+    text-indent: 30px;
+    padding: 10px 0;
+}
+
+/*联系作者*/
+.icon-xiaoxi {
+    color: var(--text-color-0);
+    font-size: 3rem !important;
+}
+
+a:hover,
+a:focus {
+    color: var(--text-color-1);
+}
+
+.topbar-right .xf-author {
+    margin-right: 8px;
+}
+
+.tooltips {
+    position: relative;
+    z-index: 2;
+}
+
+.tooltips:hover {
+    z-index: 3;
+    background: none;
+}
+
+.tooltips span {
+    display: none;
+}
+
+.tooltips:hover span {
+    /*span 标签仅在 :hover 状态时显示*/
+    display: block;
+    position: absolute;
+    top: 52px;
+    left: -42px;
+    width: 100px;
+    text-align: center;
+    background-color: var(--xf-box-background-3);
+    padding: 5px 10px;
+    font-size: 12px;
+    color: var(--text-white);
+    border-radius: 30px;
+}
+
+/* 头像 */
+.img-avatar-48 {
+    border: 3px solid var(--text-white);
+}
+
+/* 下拉菜单 */
+.dropdown-menu {
+    -webkit-background-color: var(--text-color-0);
+    background-color: var(--text-color-0);
+    border-radius: 10px;
+    -webkit-opacity: .9;
+    opacity: .9;
+}
+
+.dropdown-menu>li:nth-child(1) {
+    border-bottom: 1px solid var(--text-color-2);
+}
+
+.dropdown-menu>li>a {
+    color: var(--text-white);
+    line-height: 2.5;
+}
+
+.dropdown-menu>li>a:focus,
+.dropdown-menu>li>a:hover {
+    color: var(--text-white);
+    background-color: var(--xf-box-background-4);
+    border-radius: 10px;
+}
+
+/* 页面主内容 */
+.lyear-layout-content {
+    padding-top: 86px;
+}
+
+/* 底部版权 */
+footer {
+    z-index: 3;
+    font-size: 1.5rem;
+}
+
+footer p {
+    text-align: right;
+    margin-block-start: 0;
+    margin-block-end: 0;
+}
+
+footer p a {
+    color: var(--text-color-1);
+}
+
+footer p a:hover {
+    color: var(--text-color-4);
+}

@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" />
+    <title>基础设置 - 毛玻璃拟态UI后台管理系统</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/materialdesignicons.min.css">
+    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="icon/iconfont.css">
+    <style>
+        .form-control:focus {
+            border-color: var(--text-color-2);
+            outline: 0;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+        }
+
+        .card {
+            border-radius: 10px;
+        }
+
+        .card-header h4 {
+            color: var(--text-color-1);
+            font-weight: bold;
+            font-size: 2rem;
+        }
+
+        label {
+            color: var(--text-color-1);
+        }
+
+        .help-block {
+            color: var(--text-color-5);
+        }
+
+        .dropdown-menu {
+            color: var(--text-white);
+            background-image: -moz-linear-gradient(var(--xf-Gradient-background-2));
+            background-image: -o-linear-gradient(var(--xf-Gradient-background-2));
+            background-image: -webkit-linear-gradient(var(--xf-Gradient-background-2));
+            background-image: linear-gradient(var(--xf-Gradient-background-2));
+        }
+
+        .upload-box {
+            overflow: hidden;
+        }
+
+        .upload-box .xf_upload {
+            position: absolute;
+            font-size: 2.4rem;
+            z-index: 3;
+            -webkit-opacity: 0;
+            opacity: 0;
+        }
+
+        .lyear-switch span {
+            background-color: var(--text-color-5);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="lyear-layout-web">
+        <div class="lyear-layout-container">
+            <!--左侧导航-->
+            <aside class="lyear-layout-sidebar xf_glass">
+
+                <!-- logo -->
+                <div id="logo" class="sidebar-header">
+                    <a href="index.html"><img src="images/admin-logo.png" alt="LOGO" /></a>
+                </div>
+                <div class="lyear-layout-sidebar-scroll">
+
+                    <nav class="sidebar-main">
+                        <ul class="nav nav-drawer">
+                            <li class="nav-item"><a href="index.html"><i class="iconfont icon-shouyefill"></i>
+                                    后台首页</a></li>
+                            <li class="nav-item xf-active"><a href="set.html"><i class="iconfont icon-huaban34"></i>
+                                    基础设置</a></li>
+                            <li class="nav-item"><a href="inf.html"><i class="iconfont icon-wodexinxi_jibenxinxi"></i>
+                                    我的信息</a></li>
+                            <li class="nav-item"><a href="site.html"><i class="iconfont icon-wangzhangaofang"></i>
+                                    旗下站点</a></li>
+                            <li class="nav-item"><a href="msg.html"><i class="iconfont icon-liuyan"></i> 留言列表</a></li>
+                            <li class="nav-item"><a href="friend.html"><i class="iconfont icon-tianjiahaoyou-"></i>
+                                    添加好友</a></li>
+                            <li class="nav-item"><a href="update.html"><i class="iconfont icon-banbengengxin"></i>
+                                    更新日志</a></li>
+                        </ul>
+                    </nav>
+
+            </aside>
+            <!--End 左侧导航-->
+
+            <!--头部信息-->
+            <header class="lyear-layout-header xf_glass">
+
+                <nav class="navbar navbar-default">
+                    <div class="topbar">
+
+                        <div class="topbar-left">
+                            <div class="lyear-aside-toggler">
+                                <span class="lyear-toggler-bar"></span>
+                                <span class="lyear-toggler-bar"></span>
+                                <span class="lyear-toggler-bar"></span>
+                            </div>
+                            <div class="xf_search">
+                                <form action="https://www.baidu.com/baidu" target="_blank">
+                                    <input type="submit" value=""><i class="iconfont icon-sousuo"></i>
+                                    <input type="text" name="word" size="30" autocomplete="off" placeholder="百度一下">
+                                </form>
+                            </div>
+                        </div>
+
+                        <ul class="topbar-right">
+                            <li class="dropdown dropdown-profile">
+                                <a href="javascript:void(0)" data-toggle="dropdown" aria-expanded="false">
+                                    <img class="img-avatar img-avatar-48 m-r-10" th:src="${'https://q2.qlogo.cn/headimg_dl?dst_uin='+session.qq+'&spec=100'}" alt="admin" />
+                                </a>
+                                <ul class="dropdown-menu dropdown-menu-right">
+                                    <li> <a href="pwd.html"><i class="mdi mdi-lock-outline"></i> 修改密码</a> </li>
+                                    <li> <a href="/logout"><i class="mdi mdi-logout-variant"></i> 退出登录</a> </li>
+                                </ul>
+                            </li>
+                            <li class="xf-author"><a href="tencent://message/?uin=1809185784&Site=AicTeam&Menu=yes"
+                                                     target="_blank" rel="noopener noreferrer"
+                                                     class="tooltips iconfont icon-xiaoxi"><span>联系作者</span></a></li>
+                        </ul>
+
+                    </div>
+                </nav>
+
+            </header>
+            <!--End 头部信息-->
+
+            <!--页面主要内容-->
+            <main class="lyear-layout-content">
+
+                <div class="container-fluid">
+
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="card xf_glass">
+                                <div class="card-header">
+                                    <h4>基本信息</h4>
+                                </div>
+                                <div class="tab-content">
+                                    <div class="tab-pane active">
+
+                                        <form  method="post" class="edit-form">
+                                            <div class="form-group">
+                                                <label for="web_site_title">网站标题</label>
+                                                <input class="form-control" type="text" id="web_site_title"
+                                                    name="title" th:value="${basesetting.title}" placeholder="请输入站点标题">
+                                                <small class="help-block">网站的名称</small>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="web_site_ico">ICO图片</label>
+                                                <input type="text" class="form-control" name="icon"
+                                                    id="web_site_ico" th:value="${basesetting.icon}">
+                                                <small class="help-block">缩略的网站标志字</small>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="web_site_keywords">站点关键词</label>
+                                                <input class="form-control" type="text" id="web_site_keywords"
+                                                    name="keywords"
+                                                       th:value="${basesetting.keywords}" placeholder="请输入站点关键词">
+                                                <small class="help-block">网站搜索引擎关键字</small>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="web_site_description">站点描述</label>
+                                                <textarea class="form-control" id="web_site_description" rows="5"
+                                                    name="description" th:text="${basesetting.description}"
+                                                    placeholder="请输入站点描述">毛玻璃拟态UI个人主页是小枫原创的一款简约风格开源的新UI主页设计。</textarea>
+                                                <small class="help-block">网站描述，有利于搜索引擎抓取相关信息</small>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="web_site_icp">底部版权</label>
+                                                <input class="form-control" type="text" id="web_site_icp"
+                                                       name="copyright" th:value="${basesetting.copyright}"
+                                                       placeholder="请输入底部版权">
+
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="web_site_icp">ICP备案号</label>
+                                                <input class="form-control" type="text" id="web_site_icp"
+                                                    name="icp" th:value="${basesetting.icp}"
+                                                    placeholder="请输入备案信息">
+                                                <small class="help-block">没有icp备案的不用输入</small>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="web_site_police">公安备案号</label>
+                                                <input class="form-control" type="text" id="web_site_police"
+                                                    name="gongan" th:value="${basesetting.gongan}"
+                                                    placeholder="请输入备案信息">
+                                                <small class="help-block">没有公安备案的不用输入</small>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="web_site_police">域名授权密钥：</label>
+                                                <label for="web_site_police" id="tokenMsg"></label>
+                                                <input class="form-control" type="text" id="token"
+                                                       name="token" th:value="${basesetting.token}"
+                                                       placeholder="请输入授权密钥">
+                                                <button class="btn btn-purple" type="button" onclick="auth()" >验证</button>
+                                                <small class="help-block">输入授权密钥才能启用站点</small>
+                                            </div>
+
+
+
+                                            <div class="form-group">
+                                                <label for="web_site_time">建站时间</label>
+                                                <input class="form-control js-datepicker m-b-10" type="text"
+                                                    id="example-datepicker" name="createTime"
+                                                    placeholder="请输入建站时间" th:value="${basesetting.getTime()}"
+                                                    data-date-format="yyyy-mm-dd">
+                                                <small class="help-block">时间格式：2022-10-23</small>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="btn-block" for="web_site_status">站点关闭</label>
+                                                <label class="lyear-switch switch-solid switch-purple">
+                                                    <input type="checkbox" name="offon"  th:checked="${basesetting.offon}"  >
+                                                    <span></span>
+                                                </label>
+                                                <small class="help-block">站点关闭后将不能访问，后台可正常登录</small>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-pink m-r-5" id="xf_preservation">保
+                                                    存</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="card xf_glass">
+                                <div class="card-header">
+                                    <h4>其他设置</h4>
+                                </div>
+                                <div class="tab-content">
+                                    <div class="tab-pane active">
+
+                                        <form action="other" method="post" name="edit-form" class="edit-form">
+                                            <div class="form-group">
+                                                <label for="web_site_title_2" class="title_font">首页展示标题</label>
+                                                <input class="form-control" type="text" id="web_site_title_2"
+                                                    name="h1" th:value="${othersetting.h1}"
+                                                    placeholder="请输入站点副标题">
+                                                <small class="help-block">建议输入英文标题！</small>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="web_pc_background">PC端背景【可使用外链】</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" name="pcbg"
+                                                        id="web_pc_background" th:value="${othersetting.pcbg}">
+                                                    <div class="input-group-btn upload-box">
+                                                        <input type="file" value="上传图片" class="xf_upload" onchange="uploadFile(this)" title="上传图片">
+                                                        <button class="btn btn-purple" type="button" >上传图片</button>
+                                                    </div>
+                                                </div>
+                                                <small class="help-block">例如随机背景：<a
+                                                        href="https://api.xfyun.club/cos.php" target="_blank"
+                                                        rel="noopener noreferrer">https://api.xfyun.club/cos.php</a></small>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="web_phone_background">手机端背景【可使用外链】</label>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" name="mbg"
+                                                        id="web_phone_background" th:value="${othersetting.mbg}">
+                                                    <div class="input-group-btn upload-box">
+                                                        <input type="file" value="上传图片" class="xf_upload" onchange="uploadFile(this)" title="上传图片">
+                                                        <button class="btn btn-purple" type="button" >上传图片</button>
+                                                    </div>
+                                                </div>
+                                                <small class="help-block">图片在线压缩工具：<a href="https://compr.xfabe.com"
+                                                        target="_blank"
+                                                        rel="noopener noreferrer">https://compr.xfabe.com</a></small>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="web_site_music" class="title_font">获取播放器KEY</label>
+                                                <input class="form-control" type="text" id="web_site_music"
+                                                    name="mkey" th:value="${othersetting.mkey}" placeholder="请填写播放器KEY">
+                                                <small class="help-block">音乐播放器：<a href="https://music.xfyun.club"
+                                                        target="_blank"
+                                                        rel="noopener noreferrer">https://music.xfyun.club</a></small>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="web_site_hefeng" class="title_font">获取和风天气KEY<a href="#!"
+                                                        target="_blank" rel="noopener noreferrer"
+                                                        style="color: red;">（看教程后使用）</a></label>
+                                                <input class="form-control" type="text" id="web_site_hefeng"
+                                                    name="tkey" th:value="${othersetting.tkey}"
+                                                    placeholder="和风天气KEY">
+                                                <small class="help-block">和风天气插件：<a
+                                                        href="https://widget.qweather.com/create-standard"
+                                                        target="_blank"
+                                                        rel="noopener noreferrer">https://widget.qweather.com/create-standard</a></small>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-warning m-r-5"
+                                                        id="xf_preservation">保存</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                        <div class="col-lg-6">
+                            <div class="card xf_glass">
+                                <div class="tab-content">
+                                    <div class="tab-pane active">
+
+                                        <form action="other" method="post" name="edit-form" class="edit-form">
+                                            <div class="form-group">
+                                                <label for="web_head_code" class="title_font">添加网页头部代码</label>
+                                                <textarea class="form-control" id="web_head_code" rows="3"
+                                                    name="hcode" placeholder="例如：body {color: red;}"
+                                                th:text="${othersetting.hcode}"></textarea>
+                                                <small class="help-block">编写css代码</small>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="web_footer_code" class="title_font">添加网页底部代码</label>
+                                                <textarea class="form-control" id="web_footer_code" rows="3"
+                                                    name="bcode"
+                                                    placeholder="例如：$.alert('Hello, World!')"
+                                                          th:text="${othersetting.bcode}"></textarea>
+                                                <small class="help-block">编写js代码</small>
+                                            </div>
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-cyan m-r-5" id="xf_preservation">保
+                                                    存</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <footer class="col-md-12">
+                        <p>Copyright &copy; 2022 <a href="https://www.xfabe.com" target="_blank"
+                                rel="noopener noreferrer">小枫网络</a> | by：<a
+                                href="tencent://message/?uin=1809185784&Site=AicTeam&Menu=yes" target="_blank"
+                                rel="noopener noreferrer">小枫</a></p>
+                    </footer>
+                </div>
+
+            </main>
+            <!--End 页面主要内容-->
+        </div>
+    </div>
+
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/perfect-scrollbar.min.js"></script>
+    <script type="text/javascript" src="js/main.min.js"></script>
+    <script type="text/javascript" src="js/fireworks.js"></script>
+
+    <!--时间选择插件-->
+    <script src="js/bootstrap-datetimepicker/moment.min.js"></script>
+    <script src="js/bootstrap-datetimepicker/bootstrap-datetimepicker.min.js"></script>
+    <script src="js/bootstrap-datetimepicker/locale/zh-cn.js"></script>
+
+    <!--日期选择插件-->
+    <script src="js/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+    <script src="js/bootstrap-datepicker/locales/bootstrap-datepicker.zh-CN.min.js"></script>
+    <!-- <script type="text/javascript" src="js/main.min.js"></script> -->
+
+    <!--消息提示-->
+    <script src="js/bootstrap-notify.min.js"></script>
+    <script type="text/javascript" src="js/lightyear.js"></script>
+    <script>
+        function uploadFile(_this) {
+            let url = '/admin/upload'
+            formData = new FormData();
+            //uploadFile就是后台接收的文件参数名称
+            formData.append("file", $(_this)[0].files[0]);
+            jQuery.ajax({
+                type: "post",
+                url: url,
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    let fileNameInput = _this.parentNode.parentNode.children[0]
+                    console.log(fileNameInput,data);
+                    $(fileNameInput).val(data)
+
+                },
+            });
+        }
+
+        function auth(){
+            let token = $("#token").val()
+            $.ajax({url:"/admin/auth?token="+token.trim(),success:(res)=>{
+                document.getElementById("tokenMsg").innerText=res
+            }})
+
+        }
+    </script>
+</body>
+
+</html>
