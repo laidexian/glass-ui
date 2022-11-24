@@ -17,6 +17,10 @@
 SET NAMES utf8mb4;
 SET FOREIGN_KEY_CHECKS = 0;
 
+
+create database IF not EXISTS `glassui`;
+use `glassui`;
+
 -- ----------------------------
 -- Table structure for admin
 -- ----------------------------
